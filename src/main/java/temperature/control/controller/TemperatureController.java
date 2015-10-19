@@ -1,4 +1,4 @@
-package temperture.control.controller;
+package temperature.control.controller;
 
 public class TemperatureController {
 }

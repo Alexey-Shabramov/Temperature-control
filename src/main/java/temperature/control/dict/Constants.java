@@ -1,4 +1,4 @@
-package temperture.control.dict;
+package temperature.control.dict;
 
 public class Constants {
     /**

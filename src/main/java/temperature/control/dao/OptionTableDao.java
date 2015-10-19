@@ -1,4 +1,4 @@
-package temperture.control.dao;
+package temperature.control.dao;
 
 public interface OptionTableDao {
 }

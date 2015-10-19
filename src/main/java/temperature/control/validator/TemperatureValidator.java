@@ -1,4 +1,4 @@
-package temperture.control.validator;
+package temperature.control.validator;
 
 
 public class TemperatureValidator {

@@ -1,4 +1,4 @@
-package temperture.control.entity;
+package temperature.control.entity;
 
 
 public class Option {

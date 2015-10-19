@@ -1,4 +1,4 @@
-package temperture.control.view;
+package temperature.control.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
