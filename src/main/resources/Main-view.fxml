@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="966.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
+  <children>
+    <Pane layoutX="4.0" layoutY="1.0" prefHeight="681.0" prefWidth="966.0" visible="true">
+      <children>
+        <Label layoutX="265.0" layoutY="9.0" prefHeight="25.271484375" prefWidth="455.0" text="Программа для имитации нагрева буксовых узлов ">
+          <font>
+            <Font size="19.0" />
+          </font>
+        </Label>
+        <AreaChart id="AreaChart" layoutX="589.0" layoutY="53.0" prefHeight="287.5" prefWidth="339.0">
+          <xAxis>
+            <CategoryAxis side="BOTTOM" />
+          </xAxis>
+          <yAxis>
+            <NumberAxis side="LEFT" />
+          </yAxis>
+        </AreaChart>
+        <Button layoutX="672.0" layoutY="613.0" mnemonicParsing="false" prefWidth="256.0" text="Запустить нагрев">
+          <font>
+            <Font size="20.0" />
+          </font>
+        </Button>
+        <Label layoutX="54.0" layoutY="54.0" text="C">
+          <font>
+            <Font size="16.0" fx:id="x1" />
+          </font>
+        </Label>
+        <Label font="$x1" layoutX="582.0" layoutY="54.0" text="C" />
+        <AreaChart id="AreaChart" layoutX="69.0" layoutY="53.0" prefHeight="287.5" prefWidth="339.0">
+          <xAxis>
+            <CategoryAxis side="BOTTOM" />
+          </xAxis>
+          <yAxis>
+            <NumberAxis side="LEFT" />
+          </yAxis>
+        </AreaChart>
+        <Label layoutX="10.0" layoutY="399.0" prefWidth="200.0" text="Установить температуру:">
+          <font>
+            <Font size="17.0" fx:id="x2" />
+          </font>
+        </Label>
+        <TextField layoutX="303.0" layoutY="399.0" prefHeight="28.28125" prefWidth="92.0" />
+        <TreeView layoutX="122.0" layoutY="345.0" prefHeight="38.0" prefWidth="181.0" />
+        <Label font="$x2" layoutX="395.0" layoutY="594.0" text="Направление движения:" />
+        <Separator layoutX="0.0" layoutY="433.0" maxHeight="-1.0" maxWidth="-1.0" prefWidth="966.0" />
+        <Separator layoutX="483.0" layoutY="433.0" minWidth="2.0001220703125" orientation="VERTICAL" prefHeight="66.99997792968497" prefWidth="2.0001220703125" />
+        <Separator layoutX="2.0" layoutY="36.0" maxHeight="-1.0" maxWidth="-1.0" prefWidth="966.0" />
+        <TreeView layoutX="734.0" layoutY="448.0" prefHeight="38.0" prefWidth="181.0" />
+        <Label font="$x2" layoutX="576.0" layoutY="455.0" text="Контроль датчика:" />
+        <TreeView layoutX="214.0" layoutY="447.0" prefHeight="38.0" prefWidth="181.0" />
+        <Label font="$x2" layoutX="63.0" layoutY="455.0" text="Контроль датчика:" />
+        <RadioButton font="$x2" layoutX="352.0" layoutY="632.0" mnemonicParsing="false" text="Четное" />
+        <RadioButton font="$x2" layoutX="532.0" layoutY="630.0" mnemonicParsing="false" text="Нечетное" />
+        <Separator layoutX="3.0" layoutY="500.0" maxHeight="-1.0" maxWidth="-1.0" prefWidth="966.0" />
+        <Separator layoutX="345.0" layoutY="580.0" maxHeight="-1.0" maxWidth="-1.0" prefWidth="620.0" />
+        <Label font="$x2" layoutX="12.0" layoutY="353.0" text="Температура:" />
+        <Label font="$x2" layoutX="97.0" layoutY="42.0" prefHeight="21.9609375" prefWidth="283.0" text="                      Левый утюг" />
+        <Label font="$x2" layoutX="621.0" layoutY="42.0" prefHeight="21.9609375" prefWidth="283.0" text="                      Правый утюг" />
+        <ComboBox layoutX="607.0" layoutY="511.0" prefHeight="21.0" prefWidth="101.0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <Label font="$x2" layoutX="421.0" layoutY="511.0" text="Проверяемая система" />
+        <TreeView layoutX="128.0" layoutY="511.0" prefHeight="22.611328125" prefWidth="65.0" />
+        <Label font="$x2" layoutX="10.0" layoutY="511.0" text="Нагрев слева" />
+        <TreeView layoutX="71.0" layoutY="580.0" prefHeight="86.0" prefWidth="124.0" />
+        <Label font="$x2" layoutX="2.0" layoutY="609.0" text="Участок:" />
+        <TreeView layoutX="351.0" layoutY="511.0" prefHeight="22.611328125" prefWidth="57.0" />
+        <Label font="$x2" layoutX="207.0" layoutY="511.0" text="Показание слева" />
+        <TreeView layoutX="351.0" layoutY="551.0" prefHeight="22.611328125" prefWidth="57.0" />
+        <Label font="$x2" layoutX="202.0" layoutY="551.0" text="Показание справа" />
+        <TreeView layoutX="734.0" layoutY="345.0" prefHeight="38.0" prefWidth="181.0" />
+        <Label font="$x2" layoutX="621.0" layoutY="353.0" text="Температура:" />
+        <TreeView layoutX="470.0" layoutY="550.0" prefHeight="22.611328125" prefWidth="124.0" />
+        <Label font="$x2" layoutX="423.0" layoutY="549.0" text="Дата" />
+        <Button font="$x2" layoutX="607.0" layoutY="545.0" mnemonicParsing="false" prefWidth="101.0" text="Анализ" />
+        <RadioButton font="$x2" layoutX="722.0" layoutY="509.0" mnemonicParsing="false" text="Авто-составление отчета" />
+        <ProgressIndicator layoutX="886.0" layoutY="541.0" progress="0.0" />
+        <Button font="$x1" layoutX="722.0" layoutY="543.0" mnemonicParsing="false" prefWidth="158.0" text="Сохранить отчет" />
+        <Separator layoutX="640.0" layoutY="582.0" orientation="VERTICAL" prefHeight="100.0" />
+        <Separator layoutX="342.0" layoutY="580.0" orientation="VERTICAL" prefHeight="100.0" />
+        <TreeView layoutX="128.0" layoutY="550.0" prefHeight="22.611328125" prefWidth="65.0" />
+        <Label font="$x2" layoutX="3.0" layoutY="551.0" text="Нагрев справа" />
+        <ComboBox layoutX="732.0" layoutY="395.0" prefHeight="34.6015625" prefWidth="77.0">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Item 1" />
+              <String fx:value="Item 2" />
+              <String fx:value="Item 3" />
+            </FXCollections>
+          </items>
+        </ComboBox>
+        <Label font="$x2" layoutX="639.0" layoutY="405.0" text="Настройка:" />
+        <Separator layoutX="2.0" layoutY="340.0" maxHeight="-1.0" maxWidth="-1.0" prefWidth="966.0" />
+        <Separator layoutX="0.0" layoutY="390.0" maxHeight="-1.0" maxWidth="-1.0" prefWidth="966.0" />
+        <Label font="$x2" layoutX="230.0" layoutY="401.0" text="Слева" />
+        <Label font="$x2" layoutX="407.0" layoutY="403.0" text="Справа" />
+        <TextField layoutX="486.0" layoutY="400.0" prefHeight="28.28125" prefWidth="92.0" />
+        <TreeView layoutX="408.0" layoutY="178.0" prefHeight="38.0" prefWidth="181.0" />
+        <Label font="$x2" layoutX="413.0" layoutY="155.0" text="Температура воздуха:" />
+        <Label font="$x2" layoutX="316.0" layoutY="353.0" text="Статус:" />
+        <TreeView layoutX="374.0" layoutY="345.0" prefHeight="38.0" prefWidth="237.0" />
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
