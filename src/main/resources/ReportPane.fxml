@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane layoutX="14.0" layoutY="533.0" prefHeight="164.0" prefWidth="924.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.ReportController">
+<Pane layoutX="14.0" layoutY="533.0" prefHeight="164.0" prefWidth="924.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.ReportController">
   <children>
     <Label layoutX="447.0" layoutY="8.0" prefWidth="135.0" text="Отчёт о поездке:">
       <font>
@@ -19,21 +19,13 @@
     <Separator layoutX="-2.0" layoutY="0.0" prefWidth="924.0" />
     <ComboBox fx:id="systemListValue" layoutX="200.0" layoutY="43.0" prefHeight="21.0" prefWidth="101.0">
       <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
-        </FXCollections>
+        <FXCollections fx:factory="observableArrayList"/>
       </items>
     </ComboBox>
     <Label font="$x1" layoutX="14.0" layoutY="43.0" text="Проверяемая система:" />
     <ComboBox fx:id="systemOptionValue" layoutX="200.0" layoutY="81.0" prefHeight="23.0" prefWidth="101.0">
       <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
-        </FXCollections>
+        <FXCollections fx:factory="observableArrayList"/>
       </items>
     </ComboBox>
     <Label font="$x1" layoutX="103.0" layoutY="80.0" text="Настройка:" />
@@ -61,4 +53,4 @@
     <TextField id="dateValue" fx:id="currentShowedRightValue" layoutX="674.0" layoutY="80.0" prefWidth="65.0" />
     <TextField id="dateValue" fx:id="outsideTemperatureValue" layoutX="674.0" layoutY="117.0" prefWidth="65.00009999999747" />
   </children>
-</AnchorPane>
+</Pane>

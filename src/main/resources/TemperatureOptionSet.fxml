@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane layoutX="7.0" layoutY="449.0" prefHeight="82.0" prefWidth="932.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
+<Pane layoutX="7.0" layoutY="449.0" prefHeight="82.0" prefWidth="932.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
   <children>
     <Label layoutX="81.0" layoutY="7.0" prefWidth="200.0" text="Установить температуру:">
       <font>
@@ -19,11 +19,7 @@
     <TextField id="setLeftTemperature" fx:id="setLeftIronTemperature" layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
     <ComboBox fx:id="systemOptionList" layoutX="432.0" layoutY="42.0" prefHeight="34.6015625" prefWidth="77.0">
       <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="Item 1" />
-          <String fx:value="Item 2" />
-          <String fx:value="Item 3" />
-        </FXCollections>
+        <FXCollections fx:factory="observableArrayList"/>
       </items>
     </ComboBox>
     <Label font="$x1" layoutX="428.0" layoutY="7.0" text="Настройка:" />
@@ -41,4 +37,4 @@
     <Label font="$x1" layoutX="719.0" layoutY="54.0" text="Нагрев:" />
     <TextField id="setRightTemperature" fx:id="warmingValuesStatus" layoutX="781.0" layoutY="55.0" prefHeight="23.0" prefWidth="140.0" />
   </children>
-</AnchorPane>
+</Pane>

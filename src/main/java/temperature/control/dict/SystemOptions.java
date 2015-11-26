@@ -2,7 +2,6 @@ package temperature.control.dict;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public enum SystemOptions {
     FIRST("100"),
@@ -12,7 +11,7 @@ public enum SystemOptions {
 
     private String title;
 
-    public static final List<String> TITLES = new ArrayList<String>(Arrays.asList(new String[]{FIRST.getTitle()
+    public static ArrayList<String> OPTIONS = new ArrayList<String>(Arrays.asList(new String[]{FIRST.getTitle()
             , SECOND.getTitle()
             , THIRD.getTitle()
             , FOURTH.getTitle()}));

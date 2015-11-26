@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" layoutX="15.0" layoutY="15.0" minHeight="430.0" prefHeight="430.0" prefWidth="938.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
+<Pane id="AnchorPane" layoutX="15.0" layoutY="15.0" minHeight="430.0" prefHeight="430.0" prefWidth="938.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
   <children>
     <AreaChart id="AreaChart" layoutX="332.0" layoutY="78.0" prefHeight="287.5" prefWidth="339.0">
       <xAxis>
@@ -78,4 +78,4 @@
     <Separator layoutX="921.0" layoutY="154.0" orientation="VERTICAL" prefHeight="521.0" />
     <Separator layoutX="-1.0" layoutY="55.0" orientation="VERTICAL" prefHeight="620.0" />
   </children>
-</AnchorPane>
+</Pane>

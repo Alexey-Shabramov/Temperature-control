@@ -1,11 +1,19 @@
 package temperature.control.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import temperature.control.dict.SystemOptions;
+import temperature.control.dict.Systems;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ReportController {
 
@@ -45,7 +53,9 @@ public class ReportController {
     @FXML
     private RadioButton evenDirectionOfMovement;
 
+    @FXML
     public void saveNewReport(ActionEvent actionEvent) {
 
     }
+
 }
