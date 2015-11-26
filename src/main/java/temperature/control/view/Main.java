@@ -13,7 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/MainPane.fxml"));
         primaryStage.setTitle("Temperature control");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 966, 681));
+        primaryStage.setScene(new Scene(root, 966, 721));
         primaryStage.show();
     }
 

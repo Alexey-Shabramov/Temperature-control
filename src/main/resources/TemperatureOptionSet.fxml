@@ -8,36 +8,37 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane fx:controller="temperature.control.controller.TemperatureController" layoutX="7.0" layoutY="449.0" prefHeight="82.0" prefWidth="932.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-    <children>
-        <Label font="$x1" layoutX="81.0" layoutY="7.0" prefWidth="200.0" text="Установить температуру:" >
-            <font>
-                <Font size="17.0" fx:id="x1" />
-            </font>
-        </Label>
-        <TextField layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
-        <ComboBox layoutX="432.0" layoutY="42.0" prefHeight="34.6015625" prefWidth="77.0">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Item 1" />
-                    <String fx:value="Item 2" />
-                    <String fx:value="Item 3" />
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <Label font="$x1" layoutX="428.0" layoutY="7.0" text="Настройка:" />
-        <Label font="$x1" layoutX="4.0" layoutY="47.0" text="Слева:" />
-        <Label font="$x1" layoutX="181.0" layoutY="47.0" text="Справа:" />
-        <TextField layoutX="251.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
-        <RadioButton font="$x1" layoutX="589.0" layoutY="55.0" mnemonicParsing="false" text="Четное" />
-        <RadioButton font="$x1" layoutX="589.0" layoutY="28.0" mnemonicParsing="false" text="Нечетное" />
-        <Label font="$x1" layoutX="590.0" layoutY="4.0" text="Направление:" />
-        <Button layoutX="718.0" layoutY="13.0" mnemonicParsing="false" onAction="#beginWarming" prefWidth="200.0" text="Запустить нагрев">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Button>
-        <TreeView layoutX="800.0" layoutY="55.0" prefHeight="21.0" prefWidth="109.0" />
-        <Label font="$x1" layoutX="731.0" layoutY="54.0" text="Нагрев:" />
-    </children>
+
+<AnchorPane layoutX="7.0" layoutY="449.0" prefHeight="82.0" prefWidth="932.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
+  <children>
+    <Label layoutX="81.0" layoutY="7.0" prefWidth="200.0" text="Установить температуру:">
+      <font>
+        <Font size="17.0" fx:id="x1" />
+      </font>
+    </Label>
+    <TextField fx:id="setLeftTemperature" layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
+    <ComboBox fx:id="systemOptionList" layoutX="432.0" layoutY="42.0" prefHeight="34.6015625" prefWidth="77.0">
+      <items>
+        <FXCollections fx:factory="observableArrayList">
+          <String fx:value="Item 1" />
+          <String fx:value="Item 2" />
+          <String fx:value="Item 3" />
+        </FXCollections>
+      </items>
+    </ComboBox>
+    <Label font="$x1" layoutX="428.0" layoutY="7.0" text="Настройка:" />
+    <Label font="$x1" layoutX="4.0" layoutY="47.0" text="Слева:" />
+    <Label font="$x1" layoutX="181.0" layoutY="47.0" text="Справа:" />
+    <TextField fx:id="setRightTemperature" layoutX="251.0" layoutY="43.0" prefHeight="28.28125" prefWidth="92.0" />
+    <RadioButton font="$x1" layoutX="589.0" layoutY="55.0" mnemonicParsing="false" text="Четное" />
+    <RadioButton id="even" fx:id="evenDirectionOfMovement" font="$x1" layoutX="589.0" layoutY="28.0" mnemonicParsing="false" text="Нечетное" />
+    <Label font="$x1" layoutX="590.0" layoutY="4.0" text="Направление:" />
+    <Button fx:id="startWarming" layoutX="718.0" layoutY="13.0" mnemonicParsing="false" onAction="#beginWarming" prefWidth="200.0" text="Запустить нагрев">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Button>
+    <TreeView fx:id="warmingValues" layoutX="800.0" layoutY="55.0" prefHeight="21.0" prefWidth="109.0" />
+    <Label font="$x1" layoutX="731.0" layoutY="54.0" text="Нагрев:" />
+  </children>
 </AnchorPane>

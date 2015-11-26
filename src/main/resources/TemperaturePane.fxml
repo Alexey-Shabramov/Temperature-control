@@ -8,73 +8,74 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane id="AnchorPane" fx:controller="temperature.control.controller.TemperatureController" layoutX="15.0" layoutY="15.0" minHeight="430.0" prefHeight="430.0" prefWidth="938.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-    <children>
-        <AreaChart id="AreaChart" layoutX="332.0" layoutY="78.0" prefHeight="287.5" prefWidth="339.0">
-            <xAxis>
-                <CategoryAxis side="BOTTOM" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT" />
-            </yAxis>
-        </AreaChart>
-        <Label layoutX="14.0" layoutY="387.0" text="Температура:">
-            <font>
-                <Font size="17.0" fx:id="x1" />
-            </font>
-        </Label>
-        <Label font="$x1" layoutX="718.0" layoutY="63.0" text="Температура воздуха:" />
-        <Label font="$x1" layoutX="353.0" layoutY="387.0" text="Температура:" />
-        <Label font="$x1" layoutX="42.0" layoutY="66.0" prefHeight="22.0" prefWidth="283.0" text="                      Левый утюг" />
-        <AreaChart id="AreaChart" layoutX="14.0" layoutY="78.0" prefHeight="287.5" prefWidth="339.0">
-            <xAxis>
-                <CategoryAxis side="BOTTOM" />
-            </xAxis>
-            <yAxis>
-                <NumberAxis side="LEFT" />
-            </yAxis>
-        </AreaChart>
-        <Label layoutX="242.0" layoutY="1.0" prefHeight="25.271484375" prefWidth="455.0" text="Программа для имитации нагрева буксовых узлов ">
-            <font>
-                <Font size="19.0" />
-            </font>
-        </Label>
-        <Label font="$x1" layoutX="730.0" layoutY="155.0" text="Статус датчиков" />
-        <Label font="$x1" layoutX="375.0" layoutY="60.0" prefHeight="21.9609375" prefWidth="283.0" text="                      Правый утюг" />
-        <Label layoutX="14.0" layoutY="67.0" text="C">
-            <font>
-                <Font size="16.0" fx:id="x2" />
-            </font>
-        </Label>
-        <TreeView layoutX="127.0" layoutY="380.0" prefHeight="38.0" prefWidth="181.0" />
-        <Label font="$x2" layoutX="332.0" layoutY="61.0" text="C" />
-        <TreeView layoutX="750.0" layoutY="103.0" prefHeight="38.0" prefWidth="105.0" />
-        <TreeView layoutX="469.0" layoutY="380.0" prefHeight="38.0" prefWidth="181.0" />
-        <Label font="$x1" layoutX="672.0" layoutY="199.0" text="" />
-        <Label font="$x1" layoutX="693.0" layoutY="184.0" text="Температуры:" />
-        <TreeView layoutX="708.0" layoutY="212.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="677.0" layoutY="220.0" text="T1" />
-        <TreeView layoutX="774.0" layoutY="213.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="743.0" layoutY="221.0" text="T2" />
-        <Label font="$x1" layoutX="769.0" layoutY="273.0" text="Утюги:" />
-        <TreeView layoutX="827.0" layoutY="304.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="796.0" layoutY="312.0" text="T3" />
-        <TreeView layoutX="827.0" layoutY="349.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="796.0" layoutY="357.0" text="T4" />
-        <TreeView layoutX="758.0" layoutY="306.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="727.0" layoutY="314.0" text="T1" />
-        <TreeView layoutX="758.0" layoutY="351.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="727.0" layoutY="359.0" text="T2" />
-        <Label font="$x1" layoutX="836.0" layoutY="184.0" text="1Wire:" />
-        <TreeView layoutX="846.0" layoutY="213.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
-        <Label font="$x1" layoutX="825.0" layoutY="221.0" text="D" />
-        <Separator layoutX="673.0" layoutY="151.0" prefWidth="251.0" />
-        <Separator layoutX="0.0" layoutY="56.0" prefWidth="924.0" />
-        <Separator layoutX="671.0" layoutY="57.0" orientation="VERTICAL" prefHeight="94.0" />
-        <Separator layoutX="921.0" layoutY="56.0" orientation="VERTICAL" prefHeight="94.0" />
-        <Separator layoutX="671.0" layoutY="153.0" orientation="VERTICAL" prefHeight="280.0" />
-        <Separator layoutX="-1.0" layoutY="430.0" prefWidth="924.0" />
-        <Separator layoutX="921.0" layoutY="154.0" orientation="VERTICAL" prefHeight="521.0" />
-        <Separator layoutX="-1.0" layoutY="55.0" orientation="VERTICAL" prefHeight="620.0" />
-    </children>
+
+<AnchorPane id="AnchorPane" layoutX="15.0" layoutY="15.0" minHeight="430.0" prefHeight="430.0" prefWidth="938.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
+  <children>
+    <AreaChart id="AreaChart" layoutX="332.0" layoutY="78.0" prefHeight="287.5" prefWidth="339.0">
+      <xAxis>
+        <CategoryAxis side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT" />
+      </yAxis>
+    </AreaChart>
+    <Label layoutX="14.0" layoutY="387.0" text="Температура:">
+      <font>
+        <Font size="17.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="718.0" layoutY="63.0" text="Температура воздуха:" />
+    <Label font="$x1" layoutX="353.0" layoutY="387.0" text="Температура:" />
+    <Label font="$x1" layoutX="42.0" layoutY="66.0" prefHeight="22.0" prefWidth="283.0" text="                      Левый утюг" />
+    <AreaChart id="AreaChart" layoutX="14.0" layoutY="78.0" prefHeight="287.5" prefWidth="339.0">
+      <xAxis>
+        <CategoryAxis side="BOTTOM" />
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT" />
+      </yAxis>
+    </AreaChart>
+    <Label layoutX="242.0" layoutY="1.0" prefHeight="25.271484375" prefWidth="455.0" text="Программа для имитации нагрева буксовых узлов ">
+      <font>
+        <Font size="19.0" />
+      </font>
+    </Label>
+    <Label font="$x1" layoutX="730.0" layoutY="155.0" text="Статус датчиков" />
+    <Label font="$x1" layoutX="375.0" layoutY="60.0" prefHeight="21.9609375" prefWidth="283.0" text="                      Правый утюг" />
+    <Label layoutX="14.0" layoutY="67.0" text="C">
+      <font>
+        <Font size="16.0" fx:id="x2" />
+      </font>
+    </Label>
+    <TreeView id="left" fx:id="leftIronTemperature" layoutX="127.0" layoutY="380.0" prefHeight="38.0" prefWidth="181.0" />
+    <Label font="$x2" layoutX="332.0" layoutY="61.0" text="C" />
+    <TreeView fx:id="outsideTemperatureValue" layoutX="750.0" layoutY="103.0" prefHeight="38.0" prefWidth="105.0" />
+    <TreeView fx:id="rightIronTemperature" layoutX="469.0" layoutY="382.0" prefHeight="38.0" prefWidth="181.0" />
+    <Label font="$x1" layoutX="672.0" layoutY="199.0" text="" />
+    <Label font="$x1" layoutX="693.0" layoutY="184.0" text="Температуры:" />
+    <TreeView id="outsideTemperatureSensorStatus" fx:id="firstOutsideTemperatureSensorStatus" layoutX="708.0" layoutY="214.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="677.0" layoutY="220.0" text="T1" />
+    <TreeView fx:id="secondOutsideTemperatureSensorStatus" layoutX="774.0" layoutY="213.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="743.0" layoutY="221.0" text="T2" />
+    <Label font="$x1" layoutX="769.0" layoutY="273.0" text="Утюги:" />
+    <TreeView fx:id="thirdIronSensorStatus" layoutX="827.0" layoutY="304.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="796.0" layoutY="312.0" text="T3" />
+    <TreeView fx:id="fourhtIronSensorStatus" layoutX="827.0" layoutY="349.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="796.0" layoutY="357.0" text="T4" />
+    <TreeView fx:id="firstIronSensorStatus" layoutX="758.0" layoutY="306.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="727.0" layoutY="314.0" text="T1" />
+    <TreeView fx:id="secondIronSensorStatus" layoutX="758.0" layoutY="351.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="727.0" layoutY="359.0" text="T2" />
+    <Label font="$x1" layoutX="836.0" layoutY="184.0" text="1Wire:" />
+    <TreeView fx:id="wirePortStatus" layoutX="846.0" layoutY="213.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875" />
+    <Label font="$x1" layoutX="825.0" layoutY="221.0" text="D" />
+    <Separator layoutX="673.0" layoutY="151.0" prefWidth="251.0" />
+    <Separator layoutX="0.0" layoutY="56.0" prefWidth="924.0" />
+    <Separator layoutX="671.0" layoutY="57.0" orientation="VERTICAL" prefHeight="94.0" />
+    <Separator layoutX="921.0" layoutY="56.0" orientation="VERTICAL" prefHeight="94.0" />
+    <Separator layoutX="671.0" layoutY="153.0" orientation="VERTICAL" prefHeight="280.0" />
+    <Separator layoutX="-1.0" layoutY="430.0" prefWidth="924.0" />
+    <Separator layoutX="921.0" layoutY="154.0" orientation="VERTICAL" prefHeight="521.0" />
+    <Separator layoutX="-1.0" layoutY="55.0" orientation="VERTICAL" prefHeight="620.0" />
+  </children>
 </AnchorPane>
