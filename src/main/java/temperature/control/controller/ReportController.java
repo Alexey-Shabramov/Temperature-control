@@ -2,6 +2,6 @@ package temperature.control.controller;
 
 import javafx.event.ActionEvent;
 
-public class TemperatureController {
+public class ReportController {
 
 }
