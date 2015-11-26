@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="966.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <children>
-      <fx:include fx:id="temperaturePane" source="TemperaturePane.fxml" />
+      <fx:include fx:id="sensorsValuesPane" source="SensorsValuesPane.fxml" />
       <fx:include fx:id="temperatureOptionSet" source="TemperatureOptionSet.fxml" />
       <fx:include fx:id="reportPane" source="ReportPane.fxml" />
   </children>

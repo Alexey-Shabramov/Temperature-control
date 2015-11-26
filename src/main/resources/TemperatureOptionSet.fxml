@@ -16,7 +16,7 @@
         <Font size="17.0" fx:id="x1" />
       </font>
     </Label>
-    <TextField fx:id="setLeftTemperature" layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
+    <TextField id="setLeftTemperature" fx:id="setLeftIronTemperature" layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
     <ComboBox fx:id="systemOptionList" layoutX="432.0" layoutY="42.0" prefHeight="34.6015625" prefWidth="77.0">
       <items>
         <FXCollections fx:factory="observableArrayList">
@@ -29,16 +29,16 @@
     <Label font="$x1" layoutX="428.0" layoutY="7.0" text="Настройка:" />
     <Label font="$x1" layoutX="4.0" layoutY="47.0" text="Слева:" />
     <Label font="$x1" layoutX="181.0" layoutY="47.0" text="Справа:" />
-    <TextField fx:id="setRightTemperature" layoutX="251.0" layoutY="43.0" prefHeight="28.28125" prefWidth="92.0" />
-    <RadioButton font="$x1" layoutX="589.0" layoutY="55.0" mnemonicParsing="false" text="Четное" />
-    <RadioButton id="even" fx:id="evenDirectionOfMovement" font="$x1" layoutX="589.0" layoutY="28.0" mnemonicParsing="false" text="Нечетное" />
+    <TextField id="setRightTemperature" fx:id="setRightIronTemperature" layoutX="251.0" layoutY="43.0" prefHeight="28.28125" prefWidth="92.0" />
+    <RadioButton fx:id="evenDirectionOfMovement" font="$x1" layoutX="589.0" layoutY="59.0" mnemonicParsing="false" text="Четное" />
+    <RadioButton id="even" fx:id="unevenDirectionOfMovement" font="$x1" layoutX="589.0" layoutY="28.0" mnemonicParsing="false" text="Нечетное" />
     <Label font="$x1" layoutX="590.0" layoutY="4.0" text="Направление:" />
-    <Button fx:id="startWarming" layoutX="718.0" layoutY="13.0" mnemonicParsing="false" onAction="#beginWarming" prefWidth="200.0" text="Запустить нагрев">
+    <Button fx:id="startWarming" layoutX="721.0" layoutY="13.0" mnemonicParsing="false" onAction="#beginWarming" prefWidth="200.0" text="Запустить нагрев">
       <font>
         <Font size="20.0" />
       </font>
     </Button>
-    <TreeView fx:id="warmingValues" layoutX="800.0" layoutY="55.0" prefHeight="21.0" prefWidth="109.0" />
-    <Label font="$x1" layoutX="731.0" layoutY="54.0" text="Нагрев:" />
+    <Label font="$x1" layoutX="719.0" layoutY="54.0" text="Нагрев:" />
+    <TextField id="setRightTemperature" fx:id="warmingValuesStatus" layoutX="781.0" layoutY="55.0" prefHeight="23.0" prefWidth="140.0" />
   </children>
 </AnchorPane>

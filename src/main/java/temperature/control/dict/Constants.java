@@ -1,5 +1,7 @@
 package temperature.control.dict;
 
+import java.util.ArrayList;
+
 public class Constants {
     /**
      * Tables for base devices (ASDK, PONAB) options name

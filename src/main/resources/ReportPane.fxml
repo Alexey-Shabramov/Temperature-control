@@ -37,28 +37,28 @@
       </items>
     </ComboBox>
     <Label font="$x1" layoutX="103.0" layoutY="80.0" text="Настройка:" />
-    <TreeView fx:id="dateValue" layoutX="199.0" layoutY="117.0" prefHeight="23.0" prefWidth="101.0" />
     <Label font="$x1" layoutX="129.0" layoutY="116.0" text="Дата:" />
     <Button fx:id="addNewReport" layoutX="758.0" layoutY="113.0" mnemonicParsing="false" onAction="#saveNewReport" prefWidth="158.0" text="Создать отчет">
       <font>
         <Font size="16.0" fx:id="x2" />
       </font>
     </Button>
-    <TreeView fx:id="leftWarmingValue" layoutX="435.0" layoutY="41.0" prefHeight="22.611328125" prefWidth="65.0" />
     <Label font="$x1" layoutX="317.0" layoutY="41.0" text="Нагрев слева:" />
-    <TreeView fx:id="rightWarmingValue" layoutX="435.0" layoutY="80.0" prefHeight="22.611328125" prefWidth="65.0" />
     <Label font="$x1" layoutX="310.0" layoutY="81.0" text="Нагрев справа:" />
-    <TreeView fx:id="currentShowedValue" layoutX="678.0" layoutY="41.0" prefHeight="22.611328125" prefWidth="57.0" />
     <Label font="$x1" layoutX="528.0" layoutY="41.0" text="Показание слева:" />
-    <TreeView fx:id="currentRightValue" layoutX="678.0" layoutY="81.0" prefHeight="22.611328125" prefWidth="57.0" />
     <Label font="$x1" layoutX="519.0" layoutY="79.0" prefWidth="153.0" text="Показание справа:" />
-    <TreeView fx:id="outsideTemperatureValue" layoutX="678.0" layoutY="114.0" prefHeight="22.611328125" prefWidth="57.0" />
     <Label font="$x1" layoutX="585.0" layoutY="114.0" text="T-воздуха:" />
-    <TreeView fx:id="engeneerName" layoutX="399.0" layoutY="117.0" prefHeight="23.0" prefWidth="181.0" />
-    <Label font="$x1" layoutX="315.0" layoutY="113.0" text="Инженер" />
+    <Label font="$x1" layoutX="317.0" layoutY="117.0" text="Инженер:" />
     <RadioButton fx:id="evenDirectionOfMovement" font="$x1" layoutX="787.0" layoutY="86.0" mnemonicParsing="false" text="Четное" />
     <RadioButton id="even" fx:id="unevenDirectionOfMovement" font="$x1" layoutX="787.0" layoutY="58.0" mnemonicParsing="false" text="Нечетное" />
     <Label font="$x1" layoutX="789.0" layoutY="34.0" text="Направление:" />
     <Separator layoutX="1.0" layoutY="158.0" prefWidth="924.0" />
+    <TextField fx:id="dateValue" layoutX="200.0" layoutY="120.0" prefWidth="101.0" />
+    <TextField id="dateValue" fx:id="engeneerName" layoutX="399.0" layoutY="119.0" prefWidth="181.0" />
+    <TextField id="dateValue" fx:id="leftWarmingValue" layoutX="431.0" layoutY="41.0" prefWidth="65.0" />
+    <TextField id="dateValue" fx:id="rightWarmingValue" layoutX="431.0" layoutY="82.0" prefWidth="65.0" />
+    <TextField id="dateValue" fx:id="currentShowedLeftValue" layoutX="672.0" layoutY="39.0" prefWidth="65.00009999999747" />
+    <TextField id="dateValue" fx:id="currentShowedRightValue" layoutX="674.0" layoutY="80.0" prefWidth="65.0" />
+    <TextField id="dateValue" fx:id="outsideTemperatureValue" layoutX="674.0" layoutY="117.0" prefWidth="65.00009999999747" />
   </children>
 </AnchorPane>
