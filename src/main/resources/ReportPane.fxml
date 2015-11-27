@@ -25,7 +25,8 @@
     <Label font="$x1" layoutX="14.0" layoutY="43.0" text="Проверяемая система:" />
     <ComboBox fx:id="systemOptionValue" layoutX="200.0" layoutY="81.0" prefHeight="23.0" prefWidth="101.0">
       <items>
-        <FXCollections fx:factory="observableArrayList"/>
+        <FXCollections fx:factory="observableArrayList">
+                </FXCollections>
       </items>
     </ComboBox>
     <Label font="$x1" layoutX="103.0" layoutY="80.0" text="Настройка:" />

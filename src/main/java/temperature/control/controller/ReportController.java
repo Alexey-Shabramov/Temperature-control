@@ -1,7 +1,5 @@
 package temperature.control.controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,53 +7,54 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import temperature.control.dict.SystemOptions;
-import temperature.control.dict.Systems;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ReportController {
+public class ReportController implements Initializable{
 
     @FXML
-    private Button addNewReport;
+    public Button addNewReport;
 
     @FXML
-    private ComboBox systemListValue;
+    public ComboBox systemListValue;
 
     @FXML
-    private ComboBox systemOptionValue;
+    public ComboBox systemOptionValue;
 
     @FXML
-    private TextField dateValue;
+    public TextField dateValue;
 
     @FXML
-    private TextField leftWarmingValue;
+    public TextField leftWarmingValue;
 
     @FXML
-    private TextField rightWarmingValue;
+    public TextField rightWarmingValue;
 
     @FXML
-    private TextField engeneerName;
+    public TextField engeneerName;
 
     @FXML
-    private TextField currentShowedLeftValue;
+    public TextField currentShowedLeftValue;
 
     @FXML
-    private TextField currentShowedRightValue;
+    public TextField currentShowedRightValue;
 
     @FXML
-    private TextField outsideTemperatureValue;
+    public TextField outsideTemperatureValue;
 
     @FXML
-    private RadioButton unevenDirectionOfMovement;
+    public RadioButton unevenDirectionOfMovement;
 
     @FXML
-    private RadioButton evenDirectionOfMovement;
+    public RadioButton evenDirectionOfMovement;
 
     @FXML
     public void saveNewReport(ActionEvent actionEvent) {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

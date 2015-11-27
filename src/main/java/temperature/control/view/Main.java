@@ -6,20 +6,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.net.URL;
+import java.util.ListResourceBundle;
 
 public class Main extends Application {
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        URL url = new URL("MainPane.fxml");
-        fxmlLoader.setLocation(url);
-        Parent root = (Parent) fxmlLoader.load();
-        primaryStage.setTitle("Temperature control");
-        primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 966, 721));
-        primaryStage.show();
+         Parent root = FXMLLoader.load(getClass().getResource("/MainPane.fxml"));
+         primaryStage.setTitle("Temperature control");
+         primaryStage.setResizable(false);
+         primaryStage.setScene(new Scene(root, 966, 721));
+         primaryStage.show();
+    }
+
+    private static class ResourceWrapper extends ListResourceBundle {
+        @Override
+        protected Object[][] getContents() {
+            return new Object[0][];
+        }
     }
 
     public static void main(String[] args) {

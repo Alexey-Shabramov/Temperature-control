@@ -1,5 +1,7 @@
 package temperature.control.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,25 +15,25 @@ import java.util.ResourceBundle;
 
 public class TemperatureController implements Initializable{
     @FXML
-    private Button startWarming;
+    public Button startWarming;
 
     @FXML
-    private TextField setLeftIronTemperature;
+    public TextField setLeftIronTemperature;
 
     @FXML
-    private TextField setRightIronTemperature;
+    public TextField setRightIronTemperature;
 
     @FXML
-    private ComboBox systemOptionList;
+    public ComboBox<String> systemOptionList;
 
     @FXML
-    private RadioButton unevenDirectionOfMovement;
+    public RadioButton unevenDirectionOfMovement;
 
     @FXML
-    private RadioButton evenDirectionOfMovement;
+    public RadioButton evenDirectionOfMovement;
 
     @FXML
-    private TextField warmingValuesStatus;
+    public TextField warmingValuesStatus;
 
     @FXML
     public void beginWarming(ActionEvent actionEvent) {
@@ -40,6 +42,11 @@ public class TemperatureController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        ObservableList<String> systemOptionsList = FXCollections.observableArrayList(SystemOptions.OPTIONS);
+        systemOptionList = new ComboBox();
+        systemOptionList.getItems().setAll("Тест");
+        systemOptionList.setValue("A");
+        systemOptionsList.add("Tet");
+        systemOptionList.setVisibleRowCount(4);
     }
 }
