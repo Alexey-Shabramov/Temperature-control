@@ -35,6 +35,10 @@ public class TemperatureController implements Initializable{
     @FXML
     public TextField warmingValuesStatus;
 
+    public TemperatureController(){
+        systemOptionList = new ComboBox<String>();
+    }
+
     @FXML
     public void beginWarming(ActionEvent actionEvent) {
         System.out.println("Запуск нагрева:");
@@ -42,11 +46,6 @@ public class TemperatureController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> systemOptionsList = FXCollections.observableArrayList(SystemOptions.OPTIONS);
-        systemOptionList = new ComboBox();
-        systemOptionList.getItems().setAll("Тест");
-        systemOptionList.setValue("A");
-        systemOptionsList.add("Tet");
-        systemOptionList.setVisibleRowCount(4);
+        systemOptionList.setItems(FXCollections.observableArrayList(SystemOptions.OPTIONS));
     }
 }

@@ -12,7 +12,7 @@ public enum Systems {
 
     private String title;
 
-    public static final List<String> TITLES = new ArrayList<String>(Arrays.asList(new String[]{PONAB.getTitle()
+    public static final List<String> SYSTEMS = new ArrayList<String>(Arrays.asList(new String[]{PONAB.getTitle()
             , ASDK.getTitle()
             , DISK.getTitle()
             , KTSM.getTitle()}));
