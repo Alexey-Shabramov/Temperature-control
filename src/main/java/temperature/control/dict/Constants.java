@@ -23,6 +23,6 @@ public class Constants {
      * Direction names
      */
     public static final String EVEN = "Четное";
-    public static final String ODD = "Нечетное";
+    public static final String UNEVEN = "Нечетное";
 
 }

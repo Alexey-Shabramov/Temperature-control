@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import temperature.control.view.elements.*?>
 
 <Pane layoutX="14.0" layoutY="533.0" prefHeight="164.0" prefWidth="924.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.ReportController">
   <children>
@@ -48,10 +49,10 @@
     <Separator layoutX="1.0" layoutY="158.0" prefWidth="924.0" />
     <TextField fx:id="dateValue" layoutX="200.0" layoutY="120.0" prefWidth="101.0" />
     <TextField id="dateValue" fx:id="engeneerName" layoutX="399.0" layoutY="119.0" prefWidth="181.0" />
-    <TextField id="dateValue" fx:id="leftWarmingValue" layoutX="431.0" layoutY="41.0" prefWidth="65.0" />
-    <TextField id="dateValue" fx:id="rightWarmingValue" layoutX="431.0" layoutY="82.0" prefWidth="65.0" />
-    <TextField id="dateValue" fx:id="currentShowedLeftValue" layoutX="672.0" layoutY="39.0" prefWidth="65.00009999999747" />
-    <TextField id="dateValue" fx:id="currentShowedRightValue" layoutX="674.0" layoutY="80.0" prefWidth="65.0" />
-    <TextField id="dateValue" fx:id="outsideTemperatureValue" layoutX="674.0" layoutY="117.0" prefWidth="65.00009999999747" />
+    <NumericTextField id="leftWarmingValue" fx:id="leftWarmingValue" layoutX="431.0" layoutY="41.0" prefWidth="65.0" />
+    <NumericTextField id="rightWarmingValue" fx:id="rightWarmingValue" layoutX="431.0" layoutY="82.0" prefWidth="65.0" />
+    <NumericTextField id="currentShowedLeftValue" fx:id="currentShowedLeftValue" layoutX="672.0" layoutY="39.0" prefWidth="65.00009999999747" />
+    <NumericTextField id="currentShowedRightValue" fx:id="currentShowedRightValue" layoutX="674.0" layoutY="80.0" prefWidth="65.0" />
+    <NumericTextField id="outsideTemperatureValue" fx:id="outsideTemperatureValue" layoutX="674.0" layoutY="117.0" prefWidth="65.00009999999747" />
   </children>
 </Pane>

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import temperature.control.view.elements.*?>
 
 <Pane layoutX="7.0" layoutY="449.0" prefHeight="82.0" prefWidth="932.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.TemperatureController">
   <children>
@@ -16,7 +17,7 @@
         <Font size="17.0" fx:id="x1" />
       </font>
     </Label>
-    <TextField id="setLeftTemperature" fx:id="setLeftIronTemperature" layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
+    <NumericTextField id="setLeftTemperature" fx:id="setLeftIronTemperature" layoutX="65.0" layoutY="42.0" prefHeight="28.28125" prefWidth="92.0" />
     <ComboBox fx:id="systemOptionList" layoutX="384.0" layoutY="42.0" prefHeight="34.6015625" prefWidth="125.0">
       <items>
         <FXCollections fx:factory="observableArrayList" />
@@ -25,9 +26,9 @@
     <Label font="$x1" layoutX="403.0" layoutY="7.0" text="Настройка:" />
     <Label font="$x1" layoutX="4.0" layoutY="47.0" text="Слева:" />
     <Label font="$x1" layoutX="181.0" layoutY="47.0" text="Справа:" />
-    <TextField id="setRightTemperature" fx:id="setRightIronTemperature" layoutX="251.0" layoutY="43.0" prefHeight="28.28125" prefWidth="92.0" />
-    <RadioButton fx:id="evenDirectionOfMovement" font="$x1" layoutX="589.0" layoutY="59.0" mnemonicParsing="false" text="Четное" />
-    <RadioButton id="even" fx:id="unevenDirectionOfMovement" font="$x1" layoutX="589.0" layoutY="28.0" mnemonicParsing="false" text="Нечетное" />
+    <NumericTextField id="setRightTemperature" fx:id="setRightIronTemperature" layoutX="251.0" layoutY="43.0" prefHeight="28.28125" prefWidth="92.0" />
+    <RadioButton id="evenDirectionOfMovement" fx:id="evenDirectionOfMovement" onAction="#evenRadioAction" font="$x1" layoutX="589.0" layoutY="59.0" mnemonicParsing="false" text="Четное" />
+    <RadioButton id="unevenDirectionOfMovement" fx:id="unevenDirectionOfMovement" onAction="#unevenRadioAction" font="$x1" layoutX="589.0" layoutY="28.0" mnemonicParsing="false" text="Нечетное" />
     <Label font="$x1" layoutX="590.0" layoutY="4.0" text="Направление:" />
     <Button fx:id="startWarming" layoutX="721.0" layoutY="13.0" mnemonicParsing="false" onAction="#beginWarming" prefWidth="200.0" text="Запустить нагрев">
       <font>
@@ -35,6 +36,6 @@
       </font>
     </Button>
     <Label font="$x1" layoutX="719.0" layoutY="54.0" text="Нагрев:" />
-    <TextField id="setRightTemperature" fx:id="warmingValuesStatus" layoutX="781.0" layoutY="55.0" prefHeight="23.0" prefWidth="140.0" />
+    <NumericTextField id="setRightTemperature" fx:id="warmingValuesStatus" layoutX="781.0" layoutY="55.0" prefHeight="23.0" prefWidth="140.0" />
   </children>
 </Pane>

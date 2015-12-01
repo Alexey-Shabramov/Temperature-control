@@ -5,8 +5,8 @@ public class Option {
 
     private static Option optionInstance;
 
-    private byte leftTemperature;
-    private byte rightTemperature;
+    private String leftTemperature;
+    private String rightTemperature;
     private String systemOption;
     private String directionOfMotion;
     private boolean warmingOn = false;
@@ -21,19 +21,19 @@ public class Option {
         return optionInstance;
     }
 
-    public byte getLeftTemperature() {
+    public String getLeftTemperature() {
         return leftTemperature;
     }
 
-    public void setLeftTemperature(byte leftTemperature) {
+    public void setLeftTemperature(String leftTemperature) {
         this.leftTemperature = leftTemperature;
     }
 
-    public byte getRightTemperature() {
+    public String getRightTemperature() {
         return rightTemperature;
     }
 
-    public void setRightTemperature(byte rightTemperature) {
+    public void setRightTemperature(String rightTemperature) {
         this.rightTemperature = rightTemperature;
     }
 
@@ -79,17 +79,18 @@ public class Option {
 
         Option option = (Option) o;
 
-        if (leftTemperature != option.leftTemperature) return false;
-        if (rightTemperature != option.rightTemperature) return false;
         if (warmingOn != option.warmingOn) return false;
+        if (!leftTemperature.equals(option.leftTemperature)) return false;
+        if (!rightTemperature.equals(option.rightTemperature)) return false;
         if (!systemOption.equals(option.systemOption)) return false;
         return directionOfMotion.equals(option.directionOfMotion);
+
     }
 
     @Override
     public int hashCode() {
-        int result = (int) leftTemperature;
-        result = 31 * result + (int) rightTemperature;
+        int result = leftTemperature.hashCode();
+        result = 31 * result + rightTemperature.hashCode();
         result = 31 * result + systemOption.hashCode();
         result = 31 * result + directionOfMotion.hashCode();
         result = 31 * result + (warmingOn ? 1 : 0);

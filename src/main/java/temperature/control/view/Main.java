@@ -18,13 +18,6 @@ public class Main extends Application {
          primaryStage.show();
     }
 
-    private static class ResourceWrapper extends ListResourceBundle {
-        @Override
-        protected Object[][] getContents() {
-            return new Object[0][];
-        }
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
