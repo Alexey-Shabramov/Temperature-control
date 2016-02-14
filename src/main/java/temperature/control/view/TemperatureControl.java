@@ -6,15 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ListResourceBundle;
-
-public class Main extends Application {
+public class TemperatureControl extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
          Parent root = FXMLLoader.load(getClass().getResource("/MainPane.fxml"));
          primaryStage.setTitle("Temperature control");
          primaryStage.setResizable(false);
-         primaryStage.setScene(new Scene(root, 966, 721));
+         primaryStage.setScene(new Scene(root, 916, 600));
          primaryStage.show();
     }
 

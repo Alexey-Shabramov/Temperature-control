@@ -10,7 +10,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import temperature.control.dict.SystemOptions;
 import temperature.control.dict.Systems;
-import temperature.control.entity.Report;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,19 +29,19 @@ public class ReportController implements Initializable{
     public TextField dateValue;
 
     @FXML
-    public TextField leftWarmingValue;
+    public TextField leftIronImitationTemperature;
 
     @FXML
-    public TextField rightWarmingValue;
+    public TextField rightIronImitationTemperature;
 
     @FXML
     public TextField engeneerName;
 
     @FXML
-    public TextField currentShowedLeftValue;
+    public TextField leftIronTemperature;
 
     @FXML
-    public TextField currentShowedRightValue;
+    public TextField rightIronTemperature;
 
     @FXML
     public TextField outsideTemperatureValue;
@@ -60,6 +59,11 @@ public class ReportController implements Initializable{
 
     @FXML
     public void saveNewReport(ActionEvent actionEvent) {
+
+    }
+
+    @FXML
+    public void automaticReportInformationInsertion(ActionEvent actionEvent) {
 
     }
 
