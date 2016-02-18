@@ -2,6 +2,7 @@ package temperature.control.entity;
 
 import java.util.Date;
 
+
 public class Report {
     private byte temperatureLeft;
     private byte temperatureRight;
@@ -102,38 +103,5 @@ public class Report {
                 ", date=" + date +
                 ", directionOfMotion='" + directionOfMotion + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Report report = (Report) o;
-
-        if (temperatureLeft != report.temperatureLeft) return false;
-        if (temperatureRight != report.temperatureRight) return false;
-        if (imitationTemperatureLeft != report.imitationTemperatureLeft) return false;
-        if (imitationTemperatureRight != report.imitationTemperatureRight) return false;
-        if (outsideTemperature != report.outsideTemperature) return false;
-        if (!checkingSystem.equals(report.checkingSystem)) return false;
-        if (!engeenerInfo.equals(report.engeenerInfo)) return false;
-        if (!date.equals(report.date)) return false;
-        return directionOfMotion.equals(report.directionOfMotion);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = (int) temperatureLeft;
-        result = 31 * result + (int) temperatureRight;
-        result = 31 * result + (int) imitationTemperatureLeft;
-        result = 31 * result + (int) imitationTemperatureRight;
-        result = 31 * result + (int) outsideTemperature;
-        result = 31 * result + checkingSystem.hashCode();
-        result = 31 * result + engeenerInfo.hashCode();
-        result = 31 * result + date.hashCode();
-        result = 31 * result + directionOfMotion.hashCode();
-        return result;
     }
 }

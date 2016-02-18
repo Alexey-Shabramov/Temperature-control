@@ -1,9 +1,7 @@
 package temperature.control.entity;
 
 
-public class Option {
-
-    private static Option optionInstance;
+public class TemperatureOption {
 
     private String leftTemperature;
     private String rightTemperature;
@@ -11,14 +9,7 @@ public class Option {
     private String directionOfMotion;
     private boolean warmingOn = false;
 
-    private Option(){
-    }
-
-    public static Option getOptionInstance(){
-        if(optionInstance == null){
-            optionInstance = new Option();
-        }
-        return optionInstance;
+    public TemperatureOption() {
     }
 
     public String getLeftTemperature() {
@@ -70,30 +61,5 @@ public class Option {
                 ", directionOfMotion='" + directionOfMotion + '\'' +
                 ", warmingOn=" + warmingOn +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Option option = (Option) o;
-
-        if (warmingOn != option.warmingOn) return false;
-        if (!leftTemperature.equals(option.leftTemperature)) return false;
-        if (!rightTemperature.equals(option.rightTemperature)) return false;
-        if (!systemOption.equals(option.systemOption)) return false;
-        return directionOfMotion.equals(option.directionOfMotion);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = leftTemperature.hashCode();
-        result = 31 * result + rightTemperature.hashCode();
-        result = 31 * result + systemOption.hashCode();
-        result = 31 * result + directionOfMotion.hashCode();
-        result = 31 * result + (warmingOn ? 1 : 0);
-        return result;
     }
 }

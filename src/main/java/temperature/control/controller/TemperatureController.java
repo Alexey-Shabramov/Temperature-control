@@ -4,10 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import temperature.control.dict.Constants;
 import temperature.control.dict.SystemOptions;
-import temperature.control.entity.Option;
+import temperature.control.entity.TemperatureOption;
 import temperature.control.view.elements.NumericTextField;
 
 import java.net.URL;
@@ -35,15 +37,11 @@ public class TemperatureController implements Initializable {
     @FXML
     public NumericTextField warmingValuesStatus;
 
-    private Option temperatureOption;
-
-    public TemperatureController() {
-        systemOptionList = new ComboBox<String>();
-        temperatureOption = Option.getOptionInstance();
-    }
+    private TemperatureOption temperatureOption;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        systemOptionList = new ComboBox<String>();
         systemOptionList.setItems(FXCollections.observableArrayList(SystemOptions.OPTIONS));
     }
 

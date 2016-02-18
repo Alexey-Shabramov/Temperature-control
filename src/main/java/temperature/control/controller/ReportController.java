@@ -57,6 +57,12 @@ public class ReportController implements Initializable{
         systemOptionValue = new ComboBox<String>();
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        systemOptionValue.setItems(FXCollections.observableArrayList(SystemOptions.OPTIONS));
+        systemListValue.setItems(FXCollections.observableArrayList(Systems.SYSTEMS));
+    }
+
     @FXML
     public void saveNewReport(ActionEvent actionEvent) {
 
@@ -65,11 +71,5 @@ public class ReportController implements Initializable{
     @FXML
     public void automaticReportInformationInsertion(ActionEvent actionEvent) {
 
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        systemOptionValue.setItems(FXCollections.observableArrayList(SystemOptions.OPTIONS));
-        systemListValue.setItems(FXCollections.observableArrayList(Systems.SYSTEMS));
     }
 }

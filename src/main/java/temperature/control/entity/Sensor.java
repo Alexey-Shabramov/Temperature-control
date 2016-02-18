@@ -1,9 +1,13 @@
 package temperature.control.entity;
 
-public class Sensor {
+import com.dalsemi.onewire.application.tag.TaggedDevice;
+
+
+public class Sensor extends TaggedDevice {
     private String sensorName;
     private boolean sensorOn;
     private String sensorId;
+    private Double temperatureValue;
 
     public String getSensorName() {
         return sensorName;
@@ -29,33 +33,11 @@ public class Sensor {
         this.sensorId = sensorId;
     }
 
-    @Override
-    public String toString() {
-        return "Sensor{" +
-                "sensorName='" + sensorName + '\'' +
-                ", sensorOn=" + sensorOn +
-                ", sensorId='" + sensorId + '\'' +
-                '}';
+    public Double getTemperatureValue() {
+        return temperatureValue;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Sensor sensor = (Sensor) o;
-
-        if (sensorOn != sensor.sensorOn) return false;
-        if (!sensorName.equals(sensor.sensorName)) return false;
-        return sensorId.equals(sensor.sensorId);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = sensorName.hashCode();
-        result = 31 * result + (sensorOn ? 1 : 0);
-        result = 31 * result + sensorId.hashCode();
-        return result;
+    public void setTemperatureValue(Double temperatureValue) {
+        this.temperatureValue = temperatureValue;
     }
 }

@@ -1,7 +1,5 @@
 package temperature.control.dict;
 
-import java.util.ArrayList;
-
 public class Constants {
     /**
      * Tables for base devices (ASDK, PONAB) options name
@@ -25,4 +23,9 @@ public class Constants {
     public static final String EVEN = "Четное";
     public static final String UNEVEN = "Нечетное";
 
+    /**
+     * Check-thread names
+     */
+    public static final String CHECK_RIGHT_SENSOR = "";
+    public static final String CHECK_LEFT_SENSOR = "";
 }
