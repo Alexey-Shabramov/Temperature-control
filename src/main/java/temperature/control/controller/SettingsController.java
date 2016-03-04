@@ -14,12 +14,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.apache.commons.lang3.StringUtils;
-import temperature.control.entity.GenericAdapter;
-import temperature.control.entity.GlobalSensorList;
-import temperature.control.entity.GlobalSensorMap;
-import temperature.control.singleton.AdapterModule;
-import temperature.control.singleton.GlobalSensorListModule;
-import temperature.control.singleton.GlobalSensorMapModule;
+import temperature.control.entity.SingletonFactory;
+import temperature.control.entity.adapter.GenericAdapter;
+import temperature.control.entity.sensor.GlobalSensorList;
+import temperature.control.entity.sensor.GlobalSensorMap;
 
 import java.net.URL;
 import java.util.Properties;
@@ -27,7 +25,6 @@ import java.util.ResourceBundle;
 
 
 public class SettingsController implements Initializable {
-
     @FXML
     public TextArea loggerInformation;
     @FXML
@@ -63,9 +60,9 @@ public class SettingsController implements Initializable {
     private Properties properties;
 
     public SettingsController() {
-        this.defaultAdapter = AdapterModule.getInstance();
-        this.globalSensorList = GlobalSensorListModule.getInstance();
-        this.globalSensorMap = GlobalSensorMapModule.getInstance();
+        this.defaultAdapter = SingletonFactory.getGenericAdapter();
+        this.globalSensorList = SingletonFactory.getGlobalSensorList();
+        this.globalSensorMap = SingletonFactory.getGlobalSensorMap();
         checkSensorIdList = new ComboBox();
         evenLeftSensorIdList = checkSensorIdList;
         evenRightSensorIdList = checkSensorIdList;
@@ -78,9 +75,11 @@ public class SettingsController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        adapterList.getItems().addAll(defaultAdapter.getBaseAdapter().getAdapterName());
         try {
-            adapterPortList.getItems().add(defaultAdapter.getBaseAdapter().getPortName());
+            if (defaultAdapter.getBaseAdapter() != null) {
+                adapterList.getItems().addAll(defaultAdapter.getBaseAdapter().getAdapterName());
+                adapterPortList.getItems().add(defaultAdapter.getBaseAdapter().getPortName());
+            }
         } catch (OneWireException e) {
             e.printStackTrace();
         }
@@ -96,13 +95,13 @@ public class SettingsController implements Initializable {
     @FXML
     public void checkSensorStatus(ActionEvent actionEvent) {
         if (StringUtils.isNotBlank((CharSequence) checkSensorIdList.getSelectionModel().getSelectedItem())) {
-            TaggedDevice taggedDevice = (TaggedDevice) GlobalSensorMapModule.getInstance().get(checkSensorIdList.getSelectionModel().getSelectedItem().toString());
+            TaggedDevice taggedDevice = (TaggedDevice) globalSensorMap.get(checkSensorIdList.getSelectionModel().getSelectedItem().toString());
             DSPortAdapter l_adapter = null;
             TemperatureContainer l_container = null;
             synchronized (syncObj) {
-                if (AdapterModule.getInstance().getBaseAdapter() == null)
+                if (defaultAdapter.getBaseAdapter() == null)
                     return;
-                l_adapter = AdapterModule.getInstance().getBaseAdapter();
+                l_adapter = defaultAdapter.getBaseAdapter();
                 l_container = (TemperatureContainer) taggedDevice.getDeviceContainer();
             }
             try {
@@ -115,6 +114,7 @@ public class SettingsController implements Initializable {
                 checkedSensorStatus.setText("Статус: Доступен;  Проверка: Исправен;  Температура: " + Double.toString(l_container.getTemperature(state)));
                 loggerInformation.appendText("Проверен датчик: " + checkSensorIdList.getSelectionModel().getSelectedItem().toString() + ";  Температура: " + Double.toString(l_container.getTemperature(state)) + "\n");
             } catch (Exception e) {
+                e.printStackTrace();
                 System.out.println("Error reading device!" + e.toString());
                 loggerInformation.appendText("Error reading device! ! \n");
                 checkedSensorStatus.setText("Ошибка при чтении с адаптера!");
@@ -124,7 +124,6 @@ public class SettingsController implements Initializable {
         } else {
             loggerInformation.appendText("Вы ввели пустое значение! \n");
             checkedSensorStatus.setText("Вы ввели пустое значение!");
-
         }
     }
 
@@ -135,14 +134,14 @@ public class SettingsController implements Initializable {
     @FXML
     public void checkSensorByIdTextfieldButton(ActionEvent actionEvent) {
         if (StringUtils.isNotBlank(sensorId.getText())
-                && GlobalSensorMapModule.getInstance().containsKey(sensorId.getText())) {
-            TaggedDevice taggedDevice = (TaggedDevice) GlobalSensorMapModule.getInstance().get(checkSensorIdList.getSelectionModel().getSelectedItem().toString());
+                && globalSensorMap.containsKey(sensorId.getText())) {
+            TaggedDevice taggedDevice = (TaggedDevice) globalSensorMap.get(checkSensorIdList.getSelectionModel().getSelectedItem().toString());
             DSPortAdapter l_adapter = null;
             TemperatureContainer l_container = null;
             synchronized (syncObj) {
-                if (AdapterModule.getInstance().getBaseAdapter() == null)
+                if (defaultAdapter.getBaseAdapter() == null)
                     return;
-                l_adapter = AdapterModule.getInstance().getBaseAdapter();
+                l_adapter = defaultAdapter.getBaseAdapter();
                 l_container = (TemperatureContainer) taggedDevice.getDeviceContainer();
             }
             try {
@@ -164,7 +163,6 @@ public class SettingsController implements Initializable {
         } else {
             loggerInformation.appendText("Вы ввели неверный ID или такого датчика не существует! \n");
             checkedSensorStatus.setText("Вы ввели неверный ID или такого датчика не существует! \n");
-
         }
     }
 }

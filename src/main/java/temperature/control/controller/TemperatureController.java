@@ -9,8 +9,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import temperature.control.dict.Constants;
 import temperature.control.dict.SystemOptions;
-import temperature.control.entity.TemperatureOption;
-import temperature.control.view.elements.NumericTextField;
+import temperature.control.entity.SingletonFactory;
+import temperature.control.entity.settings.TemperatureOption;
+import temperature.control.view.NumericTextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -47,12 +48,16 @@ public class TemperatureController implements Initializable {
 
     @FXML
     public void evenRadioAction(ActionEvent actionEvent) {
+        SingletonFactory.getUnevenMovement().setActive(false);
         unevenDirectionOfMovement.setSelected(false);
+        SingletonFactory.getEvenMovement().setActive(true);
     }
 
     @FXML
     public void unevenRadioAction(ActionEvent actionEvent) {
+        SingletonFactory.getUnevenMovement().setActive(true);
         evenDirectionOfMovement.setSelected(false);
+        SingletonFactory.getEvenMovement().setActive(false);
     }
 
     @FXML

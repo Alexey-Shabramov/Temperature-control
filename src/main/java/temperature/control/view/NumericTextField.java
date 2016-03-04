@@ -1,8 +1,13 @@
-package temperature.control.view.elements;
+package temperature.control.view;
 
 import javafx.scene.control.TextField;
 
 public class NumericTextField extends TextField {
+
+    public NumericTextField() {
+
+    }
+
     @Override
     public void replaceText(int start, int end, String text) {
         if (validate(text)) {

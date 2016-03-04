@@ -2,13 +2,14 @@ package temperature.control.thread;
 
 import com.dalsemi.onewire.adapter.DSPortAdapter;
 import com.dalsemi.onewire.container.TemperatureContainer;
-import temperature.control.singleton.AdapterModule;
+import temperature.control.entity.SingletonFactory;
+
 
 public class SensorCheck implements Runnable {
 
-    protected DSPortAdapter adapter = AdapterModule.getInstance().getBaseAdapter();
+    protected DSPortAdapter adapter = SingletonFactory.getGenericAdapter().getBaseAdapter();
     private Object syncObj = new Object();
-    private TemperatureContainer temperatureContainer = (TemperatureContainer) AdapterModule.getInstance().getBaseAdapter();
+    private TemperatureContainer temperatureContainer = (TemperatureContainer) SingletonFactory.getGenericAdapter().getBaseAdapter();
     private TemperatureContainer l_container = null;
     private DSPortAdapter l_adapter = null;
 

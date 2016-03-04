@@ -1,6 +1,5 @@
 package temperature.control.app;
 
-import com.dalsemi.onewire.OneWireAccessProvider;
 import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.application.tag.TaggedDevice;
 import com.dalsemi.onewire.container.OneWireContainer;
@@ -9,44 +8,36 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import jssc.SerialPortList;
-import temperature.control.singleton.AdapterModule;
-import temperature.control.singleton.GlobalSensorListModule;
-import temperature.control.singleton.GlobalSensorMapModule;
-import temperature.control.singleton.PortListModule;
+import temperature.control.entity.SingletonFactory;
+import temperature.control.entity.sensor.GlobalSensorList;
+import temperature.control.entity.sensor.GlobalSensorMap;
+import temperature.control.util.DevicesUpdaterUtil;
+import temperature.control.util.SettingsFileUtil;
 
 import java.util.Enumeration;
 
 public class TemperatureControl extends Application {
 
     private static OneWireContainer oneWireContainer = null;
+    private static GlobalSensorMap globalSensorMap = SingletonFactory.getGlobalSensorMap();
+    private static GlobalSensorList globalSensorList = SingletonFactory.getGlobalSensorList();
 
     public static void main(String[] args) {
         try {
-            setDefaultAdapter();
-            setDefaultPortList();
-            System.out.println(AdapterModule.getInstance().getBaseAdapter());
-            for (Enumeration owd_enum = AdapterModule.getInstance().getBaseAdapter().getAllDeviceContainers();
-                 owd_enum.hasMoreElements(); ) {
+            SettingsFileUtil.loadSettings();
+            DevicesUpdaterUtil.setDefaultAdapter();
+            DevicesUpdaterUtil.setDefaultPortList();
+            System.out.println(SingletonFactory.getGenericAdapter().getBaseAdapter());
+            for (Enumeration owd_enum = SingletonFactory.getGenericAdapter().getBaseAdapter().getAllDeviceContainers(); owd_enum.hasMoreElements(); ) {
                 oneWireContainer = (OneWireContainer) owd_enum.nextElement();
-                GlobalSensorMapModule.getInstance().put(oneWireContainer.getAddressAsString(), new TaggedDevice(AdapterModule.getInstance().getBaseAdapter(), oneWireContainer.getAddressAsString()));
-                GlobalSensorListModule.getInstance().add(oneWireContainer.getAddressAsString());
+                globalSensorMap.put(oneWireContainer.getAddressAsString(), new TaggedDevice(SingletonFactory.getGenericAdapter().getBaseAdapter(), oneWireContainer.getAddressAsString()));
+                globalSensorList.add(oneWireContainer.getAddressAsString());
                 System.out.println("Device Found: " + oneWireContainer.getAddressAsString());
             }
         } catch (OneWireException e) {
             e.printStackTrace();
         }
         launch(args);
-    }
-
-    public static void setDefaultAdapter() throws OneWireException {
-        AdapterModule.getInstance().setBaseAdapter(OneWireAccessProvider.getDefaultAdapter());
-    }
-
-    public static void setDefaultPortList() {
-        for (String portName : SerialPortList.getPortNames()) {
-            PortListModule.getInstance().add(portName);
-        }
     }
 
     @Override

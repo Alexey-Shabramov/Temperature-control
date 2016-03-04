@@ -1,9 +1,9 @@
-package temperature.control.entity;
+package temperature.control.entity.adapter;
 
 import com.dalsemi.onewire.adapter.DSPortAdapter;
 
 
-public class GenericAdapter {
+public final class GenericAdapter {
     private volatile DSPortAdapter baseAdapter;
 
     public GenericAdapter() {
@@ -19,5 +19,12 @@ public class GenericAdapter {
 
     public void setBaseAdapter(DSPortAdapter baseAdapter) {
         this.baseAdapter = baseAdapter;
+    }
+
+    @Override
+    public String toString() {
+        return "GenericAdapter{" +
+                "baseAdapter=" + baseAdapter.toString() +
+                '}';
     }
 }

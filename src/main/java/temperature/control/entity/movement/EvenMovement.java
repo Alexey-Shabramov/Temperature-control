@@ -1,15 +1,25 @@
-package temperature.control.entity;
+package temperature.control.entity.movement;
 
 import jssc.SerialPort;
+import temperature.control.entity.sensor.Sensor;
 
-public class EvenMovement {
+public final class EvenMovement {
     private volatile Sensor leftIronSensor;
     private volatile Sensor rightIronSensor;
     private volatile SerialPort evenControlPort;
+    private boolean active;
 
     public EvenMovement() {
         leftIronSensor = new Sensor();
         rightIronSensor = new Sensor();
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Sensor getLeftIronSensor() {
@@ -34,5 +44,15 @@ public class EvenMovement {
 
     public void setEvenControlPort(SerialPort evenControlPort) {
         this.evenControlPort = evenControlPort;
+    }
+
+    @Override
+    public String toString() {
+        return "EvenMovement{" +
+                "leftIronSensor=" + leftIronSensor +
+                ", rightIronSensor=" + rightIronSensor +
+                ", evenControlPort=" + evenControlPort +
+                ", active=" + active +
+                '}';
     }
 }

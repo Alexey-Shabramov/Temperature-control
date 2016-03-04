@@ -1,11 +1,11 @@
-package temperature.control.entity;
+package temperature.control.entity.sensor;
 
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 
-public class GlobalSensorList extends ArrayList {
+public final class GlobalSensorList extends ArrayList {
     public GlobalSensorList() {
     }
 

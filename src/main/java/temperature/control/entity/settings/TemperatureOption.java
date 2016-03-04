@@ -1,8 +1,7 @@
-package temperature.control.entity;
+package temperature.control.entity.settings;
 
 
-public class TemperatureOption {
-
+public final class TemperatureOption {
     private String leftTemperature;
     private String rightTemperature;
     private String systemOption;

@@ -9,7 +9,6 @@ public class MainController implements Initializable {
 
 
     public MainController() {
-
     }
 
     @Override

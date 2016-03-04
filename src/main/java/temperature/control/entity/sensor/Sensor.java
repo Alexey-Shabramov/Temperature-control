@@ -1,4 +1,4 @@
-package temperature.control.entity;
+package temperature.control.entity.sensor;
 
 import com.dalsemi.onewire.application.tag.TaggedDevice;
 
@@ -39,5 +39,15 @@ public class Sensor extends TaggedDevice {
 
     public void setTemperatureValue(Double temperatureValue) {
         this.temperatureValue = temperatureValue;
+    }
+
+    @Override
+    public String toString() {
+        return "Sensor{" +
+                "sensorName='" + sensorName + '\'' +
+                ", sensorOn=" + sensorOn +
+                ", sensorId='" + sensorId + '\'' +
+                ", temperatureValue=" + temperatureValue +
+                '}';
     }
 }

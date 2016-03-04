@@ -1,4 +1,4 @@
-package temperature.control.entity;
+package temperature.control.entity.settings;
 
 import java.util.Date;
 

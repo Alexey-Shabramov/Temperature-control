@@ -1,13 +1,25 @@
-package temperature.control.entity;
+package temperature.control.entity.movement;
 
 import jssc.SerialPort;
+import temperature.control.entity.sensor.Sensor;
 
-public class UnevenMovement {
+public final class UnevenMovement {
     private volatile Sensor leftIronSensor;
     private volatile Sensor rightIronSensor;
     private volatile SerialPort unevenControlPort;
+    private boolean active;
 
     public UnevenMovement() {
+        leftIronSensor = new Sensor();
+        rightIronSensor = new Sensor();
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Sensor getLeftIronSensor() {
@@ -32,5 +44,15 @@ public class UnevenMovement {
 
     public void setUnevenControlPort(SerialPort unevenControlPort) {
         this.unevenControlPort = unevenControlPort;
+    }
+
+    @Override
+    public String toString() {
+        return "UnevenMovement{" +
+                "leftIronSensor=" + leftIronSensor +
+                ", rightIronSensor=" + rightIronSensor +
+                ", unevenControlPort=" + unevenControlPort +
+                ", active=" + active +
+                '}';
     }
 }

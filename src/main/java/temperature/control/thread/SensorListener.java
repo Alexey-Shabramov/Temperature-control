@@ -5,7 +5,7 @@ import com.dalsemi.onewire.application.tag.TaggedDevice;
 import com.dalsemi.onewire.container.OneWireContainer;
 import com.dalsemi.onewire.container.TemperatureContainer;
 import com.dalsemi.onewire.utils.OWPath;
-import temperature.control.entity.Sensor;
+import temperature.control.entity.sensor.Sensor;
 
 public class SensorListener implements Runnable {
 

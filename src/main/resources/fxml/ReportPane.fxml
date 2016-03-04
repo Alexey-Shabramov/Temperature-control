@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import temperature.control.view.elements.*?>
+<?import temperature.control.view.*?>
 <Pane xmlns:fx="http://javafx.com/fxml/1" layoutX="14.0" layoutY="533.0" prefHeight="306.0" prefWidth="924.0"
       xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.ReportController">
   <children>

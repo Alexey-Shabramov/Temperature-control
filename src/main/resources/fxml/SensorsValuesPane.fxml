@@ -39,13 +39,13 @@
         <Font size="16.0" fx:id="x2" />
       </font>
     </Label>
-    <TextField id="left" fx:id="leftIronTemperature" editable="false" layoutX="126.0" layoutY="354.0" prefHeight="38.0"
-               prefWidth="181.0"/>
+    <TextField id="left" fx:id="leftIronTemperature" editable="false" layoutX="126.0" layoutY="356.0" prefHeight="38.0"
+               prefWidth="181.0" style="-fx-font-size: 20;&#10;-fx-text-inner-color: red;" text=""/>
     <Label font="$x2" layoutX="331.0" layoutY="35.0" text="C" />
     <TextField fx:id="outsideTemperatureValue" editable="false" layoutX="749.0" layoutY="77.0" prefHeight="38.0"
                prefWidth="105.0"/>
     <TextField fx:id="rightIronTemperature" editable="false" layoutX="468.0" layoutY="356.0" prefHeight="38.0"
-               prefWidth="181.0"/>
+               prefWidth="181.0" style="-fx-font-size: 20;&#10;-fx-text-inner-color: red;"/>
     <Label font="$x1" layoutX="671.0" layoutY="173.0" text="" />
     <Label font="$x1" layoutX="709.0" layoutY="158.0" text="Температуры:" />
     <TextField id="outsideTemperatureSensorStatus" fx:id="firstOutsideTemperatureSensorStatus" editable="false"
