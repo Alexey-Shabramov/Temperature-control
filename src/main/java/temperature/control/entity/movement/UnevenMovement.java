@@ -7,19 +7,10 @@ public final class UnevenMovement {
     private volatile Sensor leftIronSensor;
     private volatile Sensor rightIronSensor;
     private volatile SerialPort unevenControlPort;
-    private boolean active;
 
     public UnevenMovement() {
         leftIronSensor = new Sensor();
         rightIronSensor = new Sensor();
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public Sensor getLeftIronSensor() {
@@ -52,7 +43,6 @@ public final class UnevenMovement {
                 "leftIronSensor=" + leftIronSensor +
                 ", rightIronSensor=" + rightIronSensor +
                 ", unevenControlPort=" + unevenControlPort +
-                ", active=" + active +
                 '}';
     }
 }

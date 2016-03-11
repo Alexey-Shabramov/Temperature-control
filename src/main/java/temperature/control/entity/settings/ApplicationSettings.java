@@ -1,5 +1,8 @@
 package temperature.control.entity.settings;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public final class ApplicationSettings {
     private String defaultAdapterAddress;
     private String defaultAdapterPort;
@@ -15,12 +18,32 @@ public final class ApplicationSettings {
     private String temperatureLeftSensorAddress;
     private String temperatureRightSensorAddress;
 
+    private String pathToReportFile;
+
+    private Map<String, String> devicesMap = new HashMap<>();
+
+    public Map<String, String> getDevicesMap() {
+        return devicesMap;
+    }
+
+    public void setDevicesMap(Map<String, String> devicesMap) {
+        this.devicesMap = devicesMap;
+    }
+
     public String getDefaultAdapterAddress() {
         return defaultAdapterAddress;
     }
 
     public void setDefaultAdapterAddress(String defaultAdapterAddress) {
         this.defaultAdapterAddress = defaultAdapterAddress;
+    }
+
+    public String getPathToReportFile() {
+        return pathToReportFile;
+    }
+
+    public void setPathToReportFile(String pathToReportFile) {
+        this.pathToReportFile = pathToReportFile;
     }
 
     public String getDefaultAdapterPort() {
@@ -108,6 +131,7 @@ public final class ApplicationSettings {
                 ", unevenControlPortAddress='" + unevenControlPortAddress + '\'' +
                 ", temperatureLeftSensorAddress='" + temperatureLeftSensorAddress + '\'' +
                 ", temperatureRightSensorAddress='" + temperatureRightSensorAddress + '\'' +
+                ", pathToReportFile='" + pathToReportFile + '\'' +
                 '}';
     }
 }

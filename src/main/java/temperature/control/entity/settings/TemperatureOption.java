@@ -1,46 +1,39 @@
 package temperature.control.entity.settings;
 
 
+import jssc.SerialPort;
+
 public final class TemperatureOption {
-    private String leftTemperature;
-    private String rightTemperature;
-    private String systemOption;
-    private String directionOfMotion;
     private boolean warmingOn = false;
+    private boolean evenDirectionOfMovement;
+
+    private SerialPort controlPortAddressByMovment;
+
+    private Double installLeftTemperature;
+    private Double installRightTemperature;
+
+    private Double leftTemperature;
+    private Double rightTemperature;
+
+    private String systemOption;
 
     public TemperatureOption() {
     }
 
-    public String getLeftTemperature() {
-        return leftTemperature;
+    public Double getInstallLeftTemperature() {
+        return installLeftTemperature;
     }
 
-    public void setLeftTemperature(String leftTemperature) {
-        this.leftTemperature = leftTemperature;
+    public void setInstallLeftTemperature(Double installLeftTemperature) {
+        this.installLeftTemperature = installLeftTemperature;
     }
 
-    public String getRightTemperature() {
-        return rightTemperature;
+    public Double getInstallRightTemperature() {
+        return installRightTemperature;
     }
 
-    public void setRightTemperature(String rightTemperature) {
-        this.rightTemperature = rightTemperature;
-    }
-
-    public String getSystemOption() {
-        return systemOption;
-    }
-
-    public void setSystemOption(String systemOption) {
-        this.systemOption = systemOption;
-    }
-
-    public String getDirectionOfMotion() {
-        return directionOfMotion;
-    }
-
-    public void setDirectionOfMotion(String directionOfMotion) {
-        this.directionOfMotion = directionOfMotion;
+    public void setInstallRightTemperature(Double installRightTemperature) {
+        this.installRightTemperature = installRightTemperature;
     }
 
     public boolean isWarmingOn() {
@@ -51,14 +44,43 @@ public final class TemperatureOption {
         this.warmingOn = warmingOn;
     }
 
-    @Override
-    public String toString() {
-        return "Option{" +
-                "leftTemperature=" + leftTemperature +
-                ", rightTemperature=" + rightTemperature +
-                ", systemOption='" + systemOption + '\'' +
-                ", directionOfMotion='" + directionOfMotion + '\'' +
-                ", warmingOn=" + warmingOn +
-                '}';
+    public boolean isEvenDirectionOfMovement() {
+        return evenDirectionOfMovement;
+    }
+
+    public void setEvenDirectionOfMovement(boolean evenDirectionOfMovement) {
+        this.evenDirectionOfMovement = evenDirectionOfMovement;
+    }
+
+    public SerialPort getControlPortAddressByMovment() {
+        return controlPortAddressByMovment;
+    }
+
+    public void setControlPortAddressByMovment(SerialPort controlPortAddressByMovment) {
+        this.controlPortAddressByMovment = controlPortAddressByMovment;
+    }
+
+    public Double getLeftTemperature() {
+        return leftTemperature;
+    }
+
+    public void setLeftTemperature(Double leftTemperature) {
+        this.leftTemperature = leftTemperature;
+    }
+
+    public Double getRightTemperature() {
+        return rightTemperature;
+    }
+
+    public void setRightTemperature(Double rightTemperature) {
+        this.rightTemperature = rightTemperature;
+    }
+
+    public String getSystemOption() {
+        return systemOption;
+    }
+
+    public void setSystemOption(String systemOption) {
+        this.systemOption = systemOption;
     }
 }

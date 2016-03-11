@@ -4,10 +4,13 @@ import com.dalsemi.onewire.OneWireException;
 import com.dalsemi.onewire.application.tag.TaggedDevice;
 import com.dalsemi.onewire.container.OneWireContainer;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import temperature.control.entity.SingletonFactory;
 import temperature.control.entity.sensor.GlobalSensorList;
 import temperature.control.entity.sensor.GlobalSensorMap;
@@ -42,10 +45,22 @@ public class TemperatureControl extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainPane.fxml"));
+        Parent root = FXMLLoader.load(TemperatureControl.class.getResource("/fxml/MainPane.fxml"));
         primaryStage.setTitle("Temperature control");
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 916, 800));
+        primaryStage.setOnHiding(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("Application Closed by click to Close Button(X)");
+                        System.exit(0);
+                    }
+                });
+            }
+        });
         primaryStage.show();
     }
 }

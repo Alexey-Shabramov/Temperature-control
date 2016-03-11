@@ -1,56 +1,83 @@
-import org.apache.commons.lang3.StringUtils;
-import temperature.control.entity.SingletonFactory;
+import jssc.SerialPort;
+import jssc.SerialPortException;
+import jssc.SerialPortList;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.*;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class MainForTest {
+    private static StringBuilder stringBuilder = new StringBuilder();
+    private static BufferedReader br = null;
+    private static BufferedWriter bw = null;
+
     public static void main(String[] args) {
-        List<String> settingsList = new ArrayList<>();
-        try (BufferedReader br = Files.newBufferedReader(Paths.get("..\\settings.txt"))) {
-            settingsList.addAll(br.lines().collect(Collectors.toList()).stream().map(line -> Arrays.asList(line.split("=")).get(1)).collect(Collectors.toList()));
-            if (StringUtils.isNoneBlank(settingsList.get(0)) && !StringUtils.equals(settingsList.get(0), ",")) {
-                SingletonFactory.getApplicationSettings().setDefaultAdapterAddress(StringUtils.removePattern(settingsList.get(0), ","));
-            }
-            if (StringUtils.isNoneBlank(settingsList.get(1)) && !StringUtils.equals(settingsList.get(1), ",")) {
-                SingletonFactory.getApplicationSettings().setDefaultAdapterPort(StringUtils.removePattern(settingsList.get(1), ","));
-            }
-            if (StringUtils.isNoneBlank(settingsList.get(2)) && !StringUtils.equals(settingsList.get(2), ",")) {
-                SingletonFactory.getApplicationSettings().setEvenRightIronSensorAddress(StringUtils.removePattern(settingsList.get(2), ","));
-            }
-            if (StringUtils.isNoneBlank(settingsList.get(3)) && !StringUtils.equals(settingsList.get(3), ",")) {
-                SingletonFactory.getApplicationSettings().setEvenLeftIronSensorAddress(StringUtils.removePattern(settingsList.get(3), ","));
-            }
-            if (!StringUtils.isNoneBlank(settingsList.get(4)) && !StringUtils.equals(settingsList.get(4), ",")) {
-                SingletonFactory.getApplicationSettings().setUnevenLeftIronSensorAddress(StringUtils.removePattern(settingsList.get(4), ","));
-            }
-            if (!StringUtils.isNoneBlank(settingsList.get(5)) && !StringUtils.equals(settingsList.get(5), ",")) {
-                SingletonFactory.getApplicationSettings().setUnevenRightIronSensorAddress(StringUtils.removePattern(settingsList.get(5), ","));
-            }
-            if (!StringUtils.isNoneBlank(settingsList.get(6)) && !StringUtils.equals(settingsList.get(6), ",")) {
-                SingletonFactory.getApplicationSettings().setEvenControlPortAddress(StringUtils.removePattern(settingsList.get(6), ","));
-            }
-            if (!StringUtils.isNoneBlank(settingsList.get(7)) && !StringUtils.equals(settingsList.get(7), ",")) {
-                SingletonFactory.getApplicationSettings().setUnevenControlPortAddress(StringUtils.removePattern(settingsList.get(7), ","));
-            }
-            if (!StringUtils.isNoneBlank(settingsList.get(8)) && !StringUtils.equals(settingsList.get(8), ",")) {
-                SingletonFactory.getApplicationSettings().setTemperatureLeftSensorAddress(StringUtils.removePattern(settingsList.get(8), ","));
-            }
-            if (!StringUtils.isNoneBlank(settingsList.get(9)) && !StringUtils.equals(settingsList.get(9), ",")) {
-                SingletonFactory.getApplicationSettings().setTemperatureRightSensorAddress(StringUtils.removePattern(settingsList.get(9), ","));
-            }
-            System.out.println(SingletonFactory.getApplicationSettings().toString());
-        } catch (IOException e) {
+        String[] portNames = SerialPortList.getPortNames();
+        for (int i = 0; i < portNames.length; i++) {
+            System.out.println(portNames[i]);
+        }
+        SerialPort serialPort = new SerialPort("COM3");
+        try {
+            serialPort.openPort();
+            serialPort.setDTR(false);
+            serialPort.setRTS(false);
+            serialPort.closePort();
+            serialPort.openPort();
+        } catch (SerialPortException e) {
             e.printStackTrace();
         }
+
     }
 
-    private static void convertDirectionsOfMovementData() {
+    public static void redactSensor(String sensorMentalName, String newSensorId) {
+        String oldFileName = new File("src/main/resources/settings/settings.txt").getPath();
+        String tmpFileName = new File("src/main/resources/settings/settings_tmp.txt").getPath();
+        String[] parts;
+        try {
+            br = new BufferedReader(new FileReader(oldFileName));
+            bw = new BufferedWriter(new FileWriter(tmpFileName));
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (line.contains(sensorMentalName)) {
+                    parts = line.split("[=]", 2);
+                    stringBuilder.append(parts[0]).append("=").append(newSensorId).append(",");
+                    bw.write(stringBuilder.toString() + "\n");
+                } else {
+                    bw.write(line + "\n");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            stringBuilder.setLength(0);
+            try {
+                if (br != null)
+                    br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (bw != null)
+                    bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        File oldFile = new File(oldFileName);
+        oldFile.delete();
+        File newFile = new File(tmpFileName);
+        newFile.renameTo(oldFile);
+    }
+
+    public static void pathCheck() {
+        String basePath = new File("").getAbsolutePath();
+        System.out.println(basePath);
+        System.out.println("PATH CHECK");
+        String oldFileName = "settings/temp_control_settings.txt";
+        String base = "/settings";
+        Path pathAbsolute = Paths.get(oldFileName);
+        System.out.println(new File(basePath).toURI().relativize(new File(oldFileName).toURI()).getPath());
+        String path = new File("src/main/resources/settings/settings.txt").getAbsolutePath();
+        System.out.println(path);
     }
 }

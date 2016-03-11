@@ -30,8 +30,10 @@
       </font>
     </Button>
     <Label font="$x1" layoutX="717.0" layoutY="60.0" text="Нагрев:" />
-    <NumericTextField fx:id="setLeftIronTemperature" layoutX="61.0" layoutY="48.0" prefWidth="96.0" />
-    <NumericTextField fx:id="setRightIronTemperature" layoutX="248.0" layoutY="50.0" prefWidth="96.0" />
+    <NumericTextField fx:id="setLeftIronTemperature" layoutX="61.0" layoutY="40.0" prefHeight="40.0" prefWidth="96.0"
+                      style="-fx-font-size: 20;&#10;-fx-text-inner-color: green;"/>
+    <NumericTextField fx:id="setRightIronTemperature" layoutX="248.0" layoutY="40.0" prefHeight="40.0" prefWidth="96.0"
+                      style="-fx-font-size: 20;&#10;-fx-text-inner-color: green;"/>
     <NumericTextField fx:id="warmingValuesStatus" layoutX="788.0" layoutY="62.0" prefWidth="96.0" />
   </children>
 </Pane>

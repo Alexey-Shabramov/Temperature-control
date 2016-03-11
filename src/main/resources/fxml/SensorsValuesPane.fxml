@@ -39,37 +39,37 @@
         <Font size="16.0" fx:id="x2" />
       </font>
     </Label>
-    <TextField id="left" fx:id="leftIronTemperature" editable="false" layoutX="126.0" layoutY="356.0" prefHeight="38.0"
+    <TextField fx:id="leftIronTemperature" editable="false" layoutX="126.0" layoutY="361.0" prefHeight="38.0"
                prefWidth="181.0" style="-fx-font-size: 20;&#10;-fx-text-inner-color: red;" text=""/>
     <Label font="$x2" layoutX="331.0" layoutY="35.0" text="C" />
-    <TextField fx:id="outsideTemperatureValue" editable="false" layoutX="749.0" layoutY="77.0" prefHeight="38.0"
-               prefWidth="105.0"/>
+    <TextField fx:id="outsideTemperatureValue" editable="false" layoutX="752.0" layoutY="77.0" prefHeight="38.0"
+               prefWidth="105.0" style="-fx-font-size: 20;&#10;-fx-text-inner-color: blue;"/>
     <TextField fx:id="rightIronTemperature" editable="false" layoutX="468.0" layoutY="356.0" prefHeight="38.0"
                prefWidth="181.0" style="-fx-font-size: 20;&#10;-fx-text-inner-color: red;"/>
     <Label font="$x1" layoutX="671.0" layoutY="173.0" text="" />
     <Label font="$x1" layoutX="709.0" layoutY="158.0" text="Температуры:" />
-    <TextField id="outsideTemperatureSensorStatus" fx:id="firstOutsideTemperatureSensorStatus" editable="false"
-               layoutX="724.0" layoutY="186.0" prefHeight="37.999900000002526" prefWidth="27.9998779296875"/>
+    <TextField fx:id="firstOutsideTemperatureSensorStatus" editable="false" layoutX="724.0" layoutY="186.0"
+               prefHeight="37.999900000002526" prefWidth="27.9998779296875" style="-fx-background-color: red;"/>
     <Label font="$x1" layoutX="693.0" layoutY="194.0" text="T1" />
-    <TextField fx:id="secondOutsideTemperatureSensorStatus" editable="false" layoutX="790.0" layoutY="187.0"
-               prefHeight="37.999900000002526" prefWidth="27.9998779296875"/>
+    <TextField fx:id="secondOutsideTemperatureSensorStatus" editable="false" layoutX="788.0" layoutY="186.0"
+               prefHeight="37.999900000002526" prefWidth="27.9998779296875" style="-fx-background-color: red;"/>
     <Label font="$x1" layoutX="759.0" layoutY="195.0" text="T2" />
-    <Label font="$x1" layoutX="768.0" layoutY="247.0" text="Утюги:" />
-    <TextField fx:id="thirdIronSensorStatus" editable="false" layoutX="826.0" layoutY="278.0"
-               prefHeight="37.999900000002526" prefWidth="27.9998779296875"/>
-    <Label font="$x1" layoutX="795.0" layoutY="286.0" text="T3" />
-    <TextField fx:id="fourhtIronSensorStatus" editable="false" layoutX="826.0" layoutY="323.0"
-               prefHeight="37.999900000002526" prefWidth="27.9998779296875"/>
-    <Label font="$x1" layoutX="795.0" layoutY="331.0" text="T4" />
-    <TextField fx:id="firstIronSensorStatus" editable="false" layoutX="757.0" layoutY="280.0"
-               prefHeight="37.999900000002526" prefWidth="27.9998779296875"/>
-    <Label font="$x1" layoutX="726.0" layoutY="288.0" text="T1" />
-    <TextField fx:id="secondIronSensorStatus" editable="false" layoutX="757.0" layoutY="325.0"
-               prefHeight="37.999900000002526" prefWidth="27.9998779296875"/>
-    <Label font="$x1" layoutX="726.0" layoutY="333.0" text="T2" />
+    <Label font="$x1" layoutX="770.0" layoutY="247.0" text="Утюги:"/>
+    <TextField fx:id="thirdIronSensorStatus" editable="false" layoutX="858.0" layoutY="297.0"
+               prefHeight="37.999900000002526" prefWidth="27.9998779296875" style="-fx-background-color: red;"/>
+    <Label font="$x1" layoutX="826.0" layoutY="305.0" text="T3"/>
+    <TextField fx:id="fourhtIronSensorStatus" editable="false" layoutX="857.0" layoutY="341.0"
+               prefHeight="37.999900000002526" prefWidth="27.9998779296875" style="-fx-background-color: red;;"/>
+    <Label font="$x1" layoutX="826.0" layoutY="350.0" text="T4"/>
+    <TextField fx:id="firstIronSensorStatus" editable="false" layoutX="724.0" layoutY="297.0"
+               prefHeight="37.999900000002526" prefWidth="27.9998779296875" style="-fx-background-color: red;;"/>
+    <Label font="$x1" layoutX="693.0" layoutY="305.0" text="T1"/>
+    <TextField fx:id="secondIronSensorStatus" editable="false" layoutX="724.0" layoutY="341.0"
+               prefHeight="37.999900000002526" prefWidth="27.9998779296875" style="-fx-background-color: red;;"/>
+    <Label font="$x1" layoutX="693.0" layoutY="350.0" text="T2"/>
     <Label font="$x1" layoutX="852.0" layoutY="158.0" text="1Wire:" />
-    <TextField fx:id="wirePortStatus" editable="false" layoutX="862.0" layoutY="187.0" prefHeight="37.999900000002526"
-               prefWidth="27.9998779296875"/>
+    <TextField fx:id="wirePortStatus" editable="false" layoutX="862.0" layoutY="186.0" prefHeight="37.999900000002526"
+               prefWidth="27.9998779296875" style="-fx-background-color: red;"/>
     <Label font="$x1" layoutX="841.0" layoutY="195.0" text="D" />
     <Separator layoutX="672.0" layoutY="125.0" prefWidth="251.0" />
     <Separator layoutX="-1.0" layoutY="30.0" prefWidth="924.0" />
@@ -79,5 +79,11 @@
     <Separator layoutX="-2.0" layoutY="404.0" prefWidth="924.0" />
     <Separator layoutX="920.0" layoutY="128.0" orientation="VERTICAL" prefHeight="521.0" />
     <Separator layoutX="-2.0" layoutY="29.0" orientation="VERTICAL" prefHeight="620.0" />
+    <Label layoutX="710.0" layoutY="273.0" text="Четное">
+      <font>
+        <Font size="14.0" fx:id="x3"/>
+      </font>
+    </Label>
+    <Label font="$x3" layoutX="833.0" layoutY="273.0" text="Нечетное"/>
   </children>
 </Pane>
