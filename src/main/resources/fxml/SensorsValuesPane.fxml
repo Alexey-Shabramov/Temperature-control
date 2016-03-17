@@ -8,14 +8,6 @@
       prefHeight="430.0" prefWidth="924.0" xmlns="http://javafx.com/javafx/2.2"
       fx:controller="temperature.control.controller.SensorController">
   <children>
-    <AreaChart id="AreaChart" layoutX="331.0" layoutY="52.0" prefHeight="287.5" prefWidth="339.0">
-      <xAxis>
-        <CategoryAxis side="BOTTOM" />
-      </xAxis>
-      <yAxis>
-        <NumberAxis side="LEFT" />
-      </yAxis>
-    </AreaChart>
     <Label layoutX="13.0" layoutY="361.0" text="Температура:">
       <font>
         <Font size="17.0" fx:id="x1" />
@@ -24,14 +16,6 @@
     <Label font="$x1" layoutX="717.0" layoutY="37.0" text="Температура воздуха:" />
     <Label font="$x1" layoutX="352.0" layoutY="361.0" text="Температура:" />
     <Label font="$x1" layoutX="41.0" layoutY="40.0" prefHeight="22.0" prefWidth="283.0" text="                      Левый утюг" />
-    <AreaChart id="AreaChart" layoutX="13.0" layoutY="52.0" prefHeight="287.5" prefWidth="339.0">
-      <xAxis>
-        <CategoryAxis side="BOTTOM" />
-      </xAxis>
-      <yAxis>
-        <NumberAxis side="LEFT" />
-      </yAxis>
-    </AreaChart>
     <Label font="$x1" layoutX="746.0" layoutY="129.0" text="Статус датчиков" />
     <Label font="$x1" layoutX="374.0" layoutY="34.0" prefHeight="21.9609375" prefWidth="283.0" text="                      Правый утюг" />
     <Label layoutX="13.0" layoutY="41.0" text="C">
@@ -85,5 +69,23 @@
       </font>
     </Label>
     <Label font="$x3" layoutX="833.0" layoutY="273.0" text="Нечетное"/>
+    <LineChart id="LineChart" fx:id="rightIronAreaChart" layoutX="331.0" layoutY="58.0" prefHeight="280.0"
+               prefWidth="337.0">
+      <xAxis>
+        <CategoryAxis side="BOTTOM"/>
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT"/>
+      </yAxis>
+    </LineChart>
+    <LineChart id="LineChart" fx:id="leftIronAreaChart" layoutX="12.0" layoutY="58.0" prefHeight="280.0"
+               prefWidth="337.0">
+      <xAxis>
+        <CategoryAxis side="BOTTOM"/>
+      </xAxis>
+      <yAxis>
+        <NumberAxis side="LEFT"/>
+      </yAxis>
+    </LineChart>
   </children>
 </Pane>

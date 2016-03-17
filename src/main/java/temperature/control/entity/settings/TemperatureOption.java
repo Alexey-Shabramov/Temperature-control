@@ -3,6 +3,8 @@ package temperature.control.entity.settings;
 
 import jssc.SerialPort;
 
+import java.util.Date;
+
 public final class TemperatureOption {
     private boolean warmingOn = false;
     private boolean evenDirectionOfMovement;
@@ -17,7 +19,17 @@ public final class TemperatureOption {
 
     private String systemOption;
 
+    private Date date = new Date();
+
     public TemperatureOption() {
+    }
+
+    public Date getDate() {
+        return new Date(date.getTime());
+    }
+
+    public void setDate(Date date) {
+        this.date = new Date(date.getTime());
     }
 
     public Double getInstallLeftTemperature() {

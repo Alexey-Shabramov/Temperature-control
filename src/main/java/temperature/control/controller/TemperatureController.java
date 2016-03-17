@@ -48,7 +48,6 @@ public class TemperatureController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        systemOptionList = new ComboBox<String>();
         systemOptionList.setItems(FXCollections.observableArrayList(SystemOptions.OPTIONS));
     }
 
@@ -81,15 +80,26 @@ public class TemperatureController implements Initializable {
             if (!evenDirectionOfMovement.isSelected() && !unevenDirectionOfMovement.isSelected()) {
                 errorList.add(Constants.ALERT_MOVEMENT_IS_NOT_SET);
             }
+            if (!StringUtils.isNoneEmpty(systemOptionList.getSelectionModel().getSelectedItem())) {
+                errorList.add(Constants.OPTION_IS_NOT_SET);
+            }
             if (!errorList.isEmpty()) {
                 createAlert(AlertFXUtil.prepareAlertMessage(errorList));
             } else {
                 temperatureOption.setWarmingOn(true);
+                if (evenDirectionOfMovement.isSelected()) {
+                    temperatureOption.setEvenDirectionOfMovement(true);
+                    temperatureOption.setControlPortAddressByMovment(SingletonFactory.getEvenMovement().getEvenControlPort());
+                } else if (unevenDirectionOfMovement.isSelected()) {
+                    temperatureOption.setEvenDirectionOfMovement(false);
+                    temperatureOption.setControlPortAddressByMovment(SingletonFactory.getUnevenMovement().getUnevenControlPort());
+                }
                 try {
-                    temperatureOption.getControlPortAddressByMovment().openPort();
+                    if (!temperatureOption.getControlPortAddressByMovment().isOpened()) {
+                        temperatureOption.getControlPortAddressByMovment().openPort();
+                    }
                     temperatureOption.getControlPortAddressByMovment().setDTR(true);
                     temperatureOption.getControlPortAddressByMovment().setRTS(true);
-                    temperatureOption.getControlPortAddressByMovment().closePort();
                 } catch (SerialPortException e) {
                     e.printStackTrace();
                 }
@@ -99,13 +109,7 @@ public class TemperatureController implements Initializable {
                 if (!setRightIronTemperature.getText().isEmpty()) {
                     temperatureOption.setRightTemperature(Double.valueOf(setRightIronTemperature.getText()));
                 }
-                if (evenDirectionOfMovement.isSelected()) {
-                    temperatureOption.setEvenDirectionOfMovement(true);
-                    temperatureOption.setControlPortAddressByMovment(SingletonFactory.getEvenMovement().getEvenControlPort());
-                } else if (unevenDirectionOfMovement.isSelected()) {
-                    temperatureOption.setEvenDirectionOfMovement(false);
-                    temperatureOption.setControlPortAddressByMovment(SingletonFactory.getUnevenMovement().getUnevenControlPort());
-                }
+
                 startWarming.setText("Выключить нагрев");
             }
         } else {
@@ -118,10 +122,8 @@ public class TemperatureController implements Initializable {
             } else {
                 temperatureOption.setWarmingOn(false);
                 try {
-                    temperatureOption.getControlPortAddressByMovment().openPort();
-                    temperatureOption.getControlPortAddressByMovment().setDTR(false);
                     temperatureOption.getControlPortAddressByMovment().setRTS(false);
-                    temperatureOption.getControlPortAddressByMovment().closePort();
+                    temperatureOption.getControlPortAddressByMovment().setDTR(false);
                 } catch (SerialPortException e) {
                     e.printStackTrace();
                 }

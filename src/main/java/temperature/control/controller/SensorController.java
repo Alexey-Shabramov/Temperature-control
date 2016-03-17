@@ -12,10 +12,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.TextField;
 import org.apache.commons.lang3.StringUtils;
 import temperature.control.entity.SingletonFactory;
-import temperature.control.entity.settings.ApplicationSettings;
 import temperature.control.entity.settings.TemperatureOption;
 
 import java.net.URL;
@@ -51,9 +51,15 @@ public class SensorController implements Initializable {
 
     @FXML
     public TextField outsideTemperatureValue;
-    public String sensorId = "B2011592990EFF28";
+
+    @FXML
+    public LineChart<Number, Number> leftIronAreaChart;
+
+    @FXML
+    public LineChart<Number, Number> rightIronAreaChart;
+
     private TemperatureOption temperatureOption;
-    private ApplicationSettings applicationSettings;
+
     private Object syncObj = new Object();
 
     @FXML
@@ -128,6 +134,7 @@ public class SensorController implements Initializable {
             return new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {
+                    int areaChartCount = 0;
                     while (true) {
                         temperatureOption = SingletonFactory.getTemperatureOption();
                         String rightSensor;
@@ -149,6 +156,7 @@ public class SensorController implements Initializable {
                                 l_adapter.beginExclusive(true);
                                 byte[] state = l_container.readDevice();
                                 l_container.doTemperatureConvert(state);
+                                temperatureOption.setInstallRightTemperature(l_container.getTemperature(state));
                                 rightIronTemperature.setText(Double.toString(l_container.getTemperature(state)));
                                 if (temperatureOption.isEvenDirectionOfMovement()) {
                                     secondIronSensorStatus.setStyle("-fx-background-color: green;");

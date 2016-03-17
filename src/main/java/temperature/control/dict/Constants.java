@@ -45,4 +45,5 @@ public class Constants {
     public static final String ALERT_WARMING_VALUES_IS_EMPTY = "Параметры температуры пустые. (Введите хотябы один параметр для одной из сторон).";
     public static final String ALERT_CURRENT_SETTINGS_CONTROL_PORT_NOT_WORKING = "Отсутствует значение контрольного порта для управления нагревом утюгов либо значение не верное.(Проверьте настройки).";
     public static final String ALERT_MOVEMENT_IS_NOT_SET = "Не задано текущее направление движения. Повторите ввод.";
+    public static final String OPTION_IS_NOT_SET = "Не задана настройка для нагрева.";
 }

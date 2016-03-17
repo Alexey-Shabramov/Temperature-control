@@ -8,8 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import org.apache.commons.lang3.StringUtils;
 import temperature.control.dict.SystemOptions;
 import temperature.control.dict.Systems;
+import temperature.control.entity.SingletonFactory;
+import temperature.control.entity.settings.TemperatureOption;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -70,6 +73,20 @@ public class ReportController implements Initializable{
 
     @FXML
     public void automaticReportInformationInsertion(ActionEvent actionEvent) {
-
+        TemperatureOption temperatureOption = SingletonFactory.getTemperatureOption();
+        if (StringUtils.isNotEmpty(temperatureOption.getInstallLeftTemperature().toString())) {
+            leftIronImitationTemperature.setText(temperatureOption.getInstallLeftTemperature().toString());
+        }
+        if (StringUtils.isNotEmpty(temperatureOption.getInstallRightTemperature().toString())) {
+            rightIronImitationTemperature.setText(temperatureOption.getInstallRightTemperature().toString());
+        }
+        systemOptionValue.getSelectionModel().select(temperatureOption.getSystemOption());
+        if (temperatureOption.isEvenDirectionOfMovement()) {
+            evenDirectionOfMovement.setSelected(true);
+            unevenDirectionOfMovement.setSelected(false);
+        } else {
+            unevenDirectionOfMovement.setSelected(true);
+            evenDirectionOfMovement.setSelected(false);
+        }
     }
 }

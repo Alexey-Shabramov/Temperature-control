@@ -53,7 +53,8 @@
     <NumericTextField id="rightIronTemperature" fx:id="rightIronTemperature" layoutX="489.0" layoutY="110.0" prefWidth="101.0" />
     <NumericTextField id="outsideTemperatureValue" fx:id="outsideTemperatureValue" layoutX="488.0" layoutY="144.0" prefWidth="101.0" />
     <TextField fx:id="engeneerName" layoutX="431.0" layoutY="181.0" prefWidth="158.0" />
-    <Button id="addNewReport" font="$x2" layoutX="461.0" layoutY="258.0" mnemonicParsing="false" prefWidth="158.0" text="Автозаполнение" />
+    <Button id="addNewReport" font="$x2" layoutX="461.0" layoutY="258.0" mnemonicParsing="false"
+            onAction="#automaticReportInformationInsertion" prefWidth="158.0" text="Автозаполнение"/>
     <Label font="$x1" layoutX="635.0" layoutY="143.0" text="Телефон:" />
     <TextField id="phone" layoutX="713.0" layoutY="143.0" prefWidth="153.0" />
   </children>
