@@ -9,6 +9,8 @@ public final class TemperatureOption {
     private boolean warmingOn = false;
     private boolean evenDirectionOfMovement;
 
+    private Double outerTemperature;
+
     private SerialPort controlPortAddressByMovment;
 
     private Double installLeftTemperature;
@@ -22,6 +24,14 @@ public final class TemperatureOption {
     private Date date = new Date();
 
     public TemperatureOption() {
+    }
+
+    public Double getOuterTemperature() {
+        return outerTemperature;
+    }
+
+    public void setOuterTemperature(Double outerTemperature) {
+        this.outerTemperature = outerTemperature;
     }
 
     public Date getDate() {

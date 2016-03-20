@@ -13,12 +13,12 @@
       </font>
     </Label>
     <Label font="$x1" layoutX="49.0" layoutY="96.0" text="Порт адаптера:"/>
-    <ComboBox fx:id="adapterList" layoutX="194.0" layoutY="55.0" prefHeight="21.000099999997474" prefWidth="96.0">
+    <ComboBox fx:id="adapterList" layoutX="194.0" layoutY="52.0" prefHeight="21.000099999997474" prefWidth="96.0">
       <items>
         <FXCollections fx:factory="observableArrayList"/>
       </items>
     </ComboBox>
-    <ComboBox id="serialPortList" fx:id="adapterPortList" layoutX="194.0" layoutY="97.0" prefHeight="21.0"
+    <ComboBox id="serialPortList" fx:id="adapterPortList" layoutX="196.0" layoutY="97.0" prefHeight="21.0"
               prefWidth="93.0">
       <items>
         <FXCollections fx:factory="observableArrayList"/>
@@ -42,15 +42,16 @@
            wrapText="false"/>
     <Label font="$x1" layoutX="36.0" layoutY="439.0" text="Левый датчик:"/>
     <Label font="$x1" layoutX="26.0" layoutY="475.0" text="Правый датчик:"/>
-    <Button layoutX="292.0" layoutY="351.0" mnemonicParsing="false" prefWidth="113.00003896484122" text="Сохранить">
+    <Button fx:id="saveSensorsIdByMovement" layoutX="292.0" layoutY="351.0" mnemonicParsing="false"
+            onAction="#saveSensorsIdByMovement" prefWidth="113.00003896484122" text="Сохранить">
       <font>
         <Font name="System Bold" size="16.0" fx:id="x3"/>
       </font>
     </Button>
     <Button font="$x3" layoutX="556.0" layoutY="351.0" mnemonicParsing="false" prefWidth="113.00003896484122"
             text="Очистить"/>
-    <Button font="$x3" layoutX="109.0" layoutY="134.0" mnemonicParsing="false" prefWidth="113.00003896484122"
-            text="Сохранить"/>
+    <Button fx:id="saveAdapterAndPort" font="$x3" layoutX="109.0" layoutY="135.0" mnemonicParsing="false"
+            onAction="#saveAdapterAndPort" prefWidth="113.00003896484122" text="Сохранить"/>
     <Label font="$x2" layoutX="487.0" layoutY="12.0" text="Проверка состояния датчиков:" wrapText="false"/>
     <Label font="$x1" layoutX="368.0" layoutY="50.0" text="Выберите датчик:"/>
     <ComboBox id="sensorList" fx:id="checkSensorIdList" layoutX="517.0" layoutY="51.0" prefHeight="21.0"
@@ -100,8 +101,8 @@
     <Separator layoutX="307.0" layoutY="0.0" orientation="VERTICAL" prefHeight="176.0"/>
     <Separator layoutX="0.0" layoutY="398.0" prefWidth="936.0"/>
     <Separator layoutX="485.0" layoutY="396.0" orientation="VERTICAL" prefHeight="163.0"/>
-    <TextArea fx:id="loggerInformation" layoutX="244.0" layoutY="598.0" prefHeight="100.0" prefWidth="637.9999389648438"
-              wrapText="true"/>
+    <TextArea fx:id="loggerInformation" layoutX="243.0" layoutY="598.0" prefHeight="100.0" prefWidth="637.9999389648438"
+              style="-fx-font-size: 16;&#10;" wrapText="true"/>
     <Label font="$x2" layoutX="439.0" layoutY="568.0" text="Информация"/>
     <TextArea fx:id="checkedSensorStatus" layoutX="517.0" layoutY="130.0" prefHeight="33.28125"
               prefWidth="359.99993896484375" wrapText="true"/>
@@ -114,21 +115,25 @@
     <Label font="$x2" layoutX="535.0" layoutY="402.0" text="Установка управляющих COM-портов:" wrapText="false"/>
     <Label font="$x1" layoutX="551.0" layoutY="435.0" text="Четное:"/>
     <Label font="$x1" layoutX="533.0" layoutY="476.0" text="Нечётное:"/>
-    <ComboBox id="adapterList" layoutX="629.0" layoutY="436.0" prefHeight="21.0" prefWidth="237.0">
+    <ComboBox id="adapterList" fx:id="evenPortList" layoutX="630.0" layoutY="436.0" prefHeight="21.0" prefWidth="237.0">
       <items>
         <FXCollections fx:factory="observableArrayList"/>
       </items>
     </ComboBox>
-    <ComboBox id="adapterList" layoutX="629.0" layoutY="477.0" prefHeight="21.0" prefWidth="237.0">
+    <ComboBox id="adapterList" fx:id="unevenPortList" layoutX="629.0" layoutY="478.0" prefHeight="21.0"
+              prefWidth="237.0">
       <items>
         <FXCollections fx:factory="observableArrayList"/>
       </items>
     </ComboBox>
-    <Button font="$x3" layoutX="175.0" layoutY="511.0" mnemonicParsing="false" prefWidth="113.00003896484122"
+    <Button fx:id="saveSensorIdByOuterTemperature" font="$x3" layoutX="175.0" layoutY="511.0" mnemonicParsing="false"
+            onAction="#saveSensorIdByOuterTemperature" prefWidth="113.00003896484122" text="Сохранить"/>
+    <Button id="savePortNumbersForControl" fx:id="saveControlPortsNumbers" font="$x3" layoutX="677.0" layoutY="511.0"
+            mnemonicParsing="false" onAction="#saveControlPortsNumbers" prefWidth="113.00003896484122"
             text="Сохранить"/>
-    <Button font="$x3" layoutX="677.0" layoutY="511.0" mnemonicParsing="false" prefWidth="113.00003896484122"
-            text="Сохранить"/>
-    <Button font="$x3" layoutX="75.0" layoutY="625.0" mnemonicParsing="false" prefWidth="153.00003896484122"
-            text="Обновить всё"/>
+    <Button fx:id="updateAllButton" font="$x3" layoutX="71.0" layoutY="598.0" mnemonicParsing="false"
+            onAction="#updateAll" prefWidth="153.00003896484122" text="Обновить всё"/>
+    <Button id="updateAll" font="$x3" layoutX="71.0" layoutY="648.0" mnemonicParsing="false" onAction="#сleanLogger"
+            prefWidth="153.00003896484122" text="Очистить"/>
   </children>
 </Pane>

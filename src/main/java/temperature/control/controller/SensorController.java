@@ -15,6 +15,7 @@ import javafx.geometry.Pos;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.TextField;
 import org.apache.commons.lang3.StringUtils;
+import temperature.control.dict.Constants;
 import temperature.control.entity.SingletonFactory;
 import temperature.control.entity.settings.TemperatureOption;
 
@@ -24,43 +25,34 @@ import java.util.ResourceBundle;
 public class SensorController implements Initializable {
     @FXML
     public TextField leftIronTemperature;
-
     @FXML
     public TextField rightIronTemperature;
-
     @FXML
     public TextField firstOutsideTemperatureSensorStatus;
-
     @FXML
     public TextField secondOutsideTemperatureSensorStatus;
-
     @FXML
     public TextField thirdIronSensorStatus;
-
     @FXML
     public TextField fourhtIronSensorStatus;
-
     @FXML
     public TextField firstIronSensorStatus;
-
     @FXML
     public TextField wirePortStatus;
-
     @FXML
     public TextField secondIronSensorStatus;
-
     @FXML
     public TextField outsideTemperatureValue;
-
     @FXML
     public LineChart<Number, Number> leftIronAreaChart;
-
     @FXML
     public LineChart<Number, Number> rightIronAreaChart;
 
     private TemperatureOption temperatureOption;
 
-    private Object syncObj = new Object();
+    private Object firstSyncObj = new Object();
+    private Object secondSyncObj = new Object();
+    private Object thirdSyncObj = new Object();
 
     @FXML
     private Service<Void> checkLeftIron = new Service<Void>() {
@@ -72,7 +64,7 @@ public class SensorController implements Initializable {
                     while (true) {
                         if (SingletonFactory.getGenericAdapter().getBaseAdapter() != null
                                 && SingletonFactory.getGenericAdapter().getBaseAdapter().adapterDetected()) {
-                            wirePortStatus.setStyle("-fx-background-color: green;");
+                            wirePortStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
                             temperatureOption = SingletonFactory.getTemperatureOption();
                             String leftSensor;
                             if (temperatureOption.isEvenDirectionOfMovement()) {
@@ -82,12 +74,11 @@ public class SensorController implements Initializable {
                             }
                             if (StringUtils.isNotBlank(leftSensor)
                                     && SingletonFactory.getGlobalSensorMap().containsKey(leftSensor)) {
-                                TaggedDevice taggedDevice = (TaggedDevice) SingletonFactory.getGlobalSensorMap().get(leftSensor);
                                 DSPortAdapter l_adapter = null;
                                 TemperatureContainer l_container = null;
-                                synchronized (syncObj) {
+                                synchronized (firstSyncObj) {
                                     l_adapter = SingletonFactory.getGenericAdapter().getBaseAdapter();
-                                    l_container = (TemperatureContainer) taggedDevice.getDeviceContainer();
+                                    l_container = (TemperatureContainer) ((TaggedDevice) SingletonFactory.getGlobalSensorMap().get(leftSensor)).getDeviceContainer();
                                 }
                                 try {
                                     l_adapter.beginExclusive(true);
@@ -96,30 +87,34 @@ public class SensorController implements Initializable {
                                     temperatureOption.setLeftTemperature(l_container.getTemperature(state));
                                     leftIronTemperature.setText(Double.toString(l_container.getTemperature(state)));
                                     if (temperatureOption.isEvenDirectionOfMovement()) {
-                                        firstIronSensorStatus.setStyle("-fx-background-color: green;");
-                                        thirdIronSensorStatus.setStyle("-fx-background-color: red;");
+                                        firstIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
+                                        thirdIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
                                     } else {
-                                        thirdIronSensorStatus.setStyle("-fx-background-color: green;");
-                                        firstIronSensorStatus.setStyle("-fx-background-color: red;");
+                                        thirdIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
+                                        firstIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
                                     }
-                                    System.out.println("Температура равна: " + Double.toString(l_container.getTemperature(state)));
+                                    System.out.println(Constants.TEMPERATURE_IS + Double.toString(l_container.getTemperature(state)));
                                 } catch (Exception e) {
-                                    System.out.println("Error reading device!" + e.toString());
+                                    System.out.println(Constants.ERROR_READING_DEVICE + e.toString());
                                     if (temperatureOption.isEvenDirectionOfMovement()) {
-                                        firstIronSensorStatus.setStyle("-fx-background-color: yellow;");
+                                        firstIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_YELLOW);
                                     } else {
-                                        thirdIronSensorStatus.setStyle("-fx-background-color: yellow;");
+                                        thirdIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_YELLOW);
                                     }
                                 } finally {
                                     l_adapter.endExclusive();
                                 }
                             } else {
-                                firstIronSensorStatus.setStyle("-fx-background-color: red;");
-                                System.out.println("Данные датчики не обнаружены!");
-                                checkLeftIron.wait(0);
+                                if (temperatureOption.isEvenDirectionOfMovement()) {
+                                    firstIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
+                                } else {
+                                    thirdIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
+                                }
+                                System.out.println(Constants.SENSORS_NOT_FOUND);
+                                continue;
                             }
                         } else {
-                            wirePortStatus.setStyle("-fx-background-color: red;");
+                            wirePortStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
                         }
                     }
                 }
@@ -148,7 +143,7 @@ public class SensorController implements Initializable {
                             TaggedDevice taggedDevice = (TaggedDevice) SingletonFactory.getGlobalSensorMap().get(rightSensor);
                             DSPortAdapter l_adapter = null;
                             TemperatureContainer l_container = null;
-                            synchronized (syncObj) {
+                            synchronized (secondSyncObj) {
                                 l_adapter = SingletonFactory.getGenericAdapter().getBaseAdapter();
                                 l_container = (TemperatureContainer) taggedDevice.getDeviceContainer();
                             }
@@ -156,28 +151,33 @@ public class SensorController implements Initializable {
                                 l_adapter.beginExclusive(true);
                                 byte[] state = l_container.readDevice();
                                 l_container.doTemperatureConvert(state);
-                                temperatureOption.setInstallRightTemperature(l_container.getTemperature(state));
+                                temperatureOption.setRightTemperature(l_container.getTemperature(state));
                                 rightIronTemperature.setText(Double.toString(l_container.getTemperature(state)));
                                 if (temperatureOption.isEvenDirectionOfMovement()) {
-                                    secondIronSensorStatus.setStyle("-fx-background-color: green;");
-                                    fourhtIronSensorStatus.setStyle("-fx-background-color: red;");
+                                    secondIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
+                                    fourhtIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
                                 } else {
-                                    fourhtIronSensorStatus.setStyle("-fx-background-color: green;");
-                                    secondIronSensorStatus.setStyle("-fx-background-color: red;");
+                                    fourhtIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
+                                    secondIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
                                 }
                             } catch (OneWireIOException e) {
                                 if (temperatureOption.isEvenDirectionOfMovement()) {
-                                    secondIronSensorStatus.setStyle("-fx-background-color: yellow;");
+                                    secondIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_YELLOW);
                                 } else {
-                                    fourhtIronSensorStatus.setStyle("-fx-background-color: yellow;");
+                                    fourhtIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_YELLOW);
                                 }
-                                System.out.println("Error reading device!" + e.toString());
+                                System.out.println(Constants.ERROR_READING_DEVICE + e.toString());
                             } finally {
                                 l_adapter.endExclusive();
                             }
                         } else {
-                            System.out.println("Данные датчики не обнаружены!");
-                            checkRightIron.wait(0);
+                            if (temperatureOption.isEvenDirectionOfMovement()) {
+                                secondIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
+                            } else {
+                                fourhtIronSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
+                            }
+                            System.out.println(Constants.SENSORS_NOT_FOUND);
+                            continue;
                         }
                     }
                 }
@@ -199,7 +199,7 @@ public class SensorController implements Initializable {
                             TaggedDevice taggedDevice = (TaggedDevice) SingletonFactory.getGlobalSensorMap().get(leftSensor);
                             DSPortAdapter l_adapter = null;
                             TemperatureContainer l_container = null;
-                            synchronized (syncObj) {
+                            synchronized (thirdSyncObj) {
                                 l_adapter = SingletonFactory.getGenericAdapter().getBaseAdapter();
                                 l_container = (TemperatureContainer) taggedDevice.getDeviceContainer();
                             }
@@ -207,17 +207,19 @@ public class SensorController implements Initializable {
                                 l_adapter.beginExclusive(true);
                                 byte[] state = l_container.readDevice();
                                 l_container.doTemperatureConvert(state);
-                                firstOutsideTemperatureSensorStatus.setStyle("-fx-background-color: green;");
+                                firstOutsideTemperatureSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
+                                temperatureOption.setOuterTemperature(l_container.getTemperature(state));
                                 outsideTemperatureValue.setText(Double.toString(l_container.getTemperature(state)));
                             } catch (OneWireIOException e) {
-                                firstOutsideTemperatureSensorStatus.setStyle("-fx-background-color: yellow;");
-                                System.out.println("Error reading device!" + e.toString());
+                                firstOutsideTemperatureSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_YELLOW);
+                                System.out.println(Constants.ERROR_READING_DEVICE + e.toString());
                             } finally {
                                 l_adapter.endExclusive();
                             }
                         } else {
-                            System.out.println("Данные датчики не обнаружены!");
-                            checkLeftOutsideTemperatureSensor.wait(0);
+                            System.out.println(Constants.SENSORS_NOT_FOUND);
+                            firstOutsideTemperatureSensorStatus.setStyle(Constants.FX_TEXT_BACKGROUND_RED);
+                            continue;
                         }
                     }
                 }
@@ -234,7 +236,7 @@ public class SensorController implements Initializable {
         try {
             if (SingletonFactory.getGenericAdapter().getBaseAdapter() != null
                     && SingletonFactory.getGenericAdapter().getBaseAdapter().adapterDetected()) {
-                wirePortStatus.setStyle("-fx-background-color: green;");
+                wirePortStatus.setStyle(Constants.FX_TEXT_BACKGROUND_GREEN);
             }
         } catch (OneWireException e) {
             e.printStackTrace();
@@ -257,6 +259,6 @@ public class SensorController implements Initializable {
             }
         });
         checkRightIron.start();
-        checkLeftOutsideTemperatureSensor.start();
+        checkLeftOutsideTemperatureSensor.restart();
     }
 }

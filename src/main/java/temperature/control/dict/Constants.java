@@ -46,4 +46,25 @@ public class Constants {
     public static final String ALERT_CURRENT_SETTINGS_CONTROL_PORT_NOT_WORKING = "Отсутствует значение контрольного порта для управления нагревом утюгов либо значение не верное.(Проверьте настройки).";
     public static final String ALERT_MOVEMENT_IS_NOT_SET = "Не задано текущее направление движения. Повторите ввод.";
     public static final String OPTION_IS_NOT_SET = "Не задана настройка для нагрева.";
+
+    /**
+     * Logger messages
+     */
+    public static final String SENSOR_CHECK_MESSAGE = "Статус: Доступен;  Проверка: Исправен;  Температура: ";
+    public static final String WRONG_SENSOR_ID_INSERTED = "Вы ввели неверный ID или такого датчика не существует! \n";
+    public static final String ERROR_READING_DEVICE = "При чтении устройства возникла ошибка! \n";
+    public static final String PORTS_ID_SAVED = "Адреса портов сохранены. \n";
+    public static final String TEMPERATURE_SENSORS_ID_SAVED = "Адреса датчиков температуры внешней среды сохранены. \n";
+    public static final String SENSORS_NOT_FOUND = "Данные датчики не обнаружены! \n";
+    public static final String TEMPERATURE_IS = "Температура равна: ";
+
+    /**
+     * FXML CSS
+     */
+    public static final String FX_TEXT_BACKGROUND_GREEN = "-fx-background-color: green;";
+    public static final String FX_TEXT_BACKGROUND_YELLOW = "-fx-background-color: yellow;";
+    public static final String FX_TEXT_BACKGROUND_RED = "-fx-background-color: red;";
+
+    public static final String AUTOFINDING_DATA = "Производиться поиск данных из текущих настроек...\n";
+    public static final String AUTOFINDING_DATA_IS_ADDED = "Данные по текущим настройкам добавлены.\n";
 }

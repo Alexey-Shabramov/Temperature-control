@@ -107,9 +107,9 @@ public class TemperatureController implements Initializable {
                     temperatureOption.setInstallLeftTemperature(Double.valueOf(setLeftIronTemperature.getText()));
                 }
                 if (!setRightIronTemperature.getText().isEmpty()) {
-                    temperatureOption.setRightTemperature(Double.valueOf(setRightIronTemperature.getText()));
+                    temperatureOption.setInstallRightTemperature(Double.valueOf(setRightIronTemperature.getText()));
                 }
-
+                temperatureOption.setSystemOption(systemOptionList.getSelectionModel().getSelectedItem());
                 startWarming.setText("Выключить нагрев");
             }
         } else {
@@ -124,6 +124,7 @@ public class TemperatureController implements Initializable {
                 try {
                     temperatureOption.getControlPortAddressByMovment().setRTS(false);
                     temperatureOption.getControlPortAddressByMovment().setDTR(false);
+                    temperatureOption.getControlPortAddressByMovment().closePort();
                 } catch (SerialPortException e) {
                     e.printStackTrace();
                 }

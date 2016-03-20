@@ -60,7 +60,7 @@
     <Separator layoutX="670.0" layoutY="31.0" orientation="VERTICAL" prefHeight="94.0" />
     <Separator layoutX="920.0" layoutY="30.0" orientation="VERTICAL" prefHeight="94.0" />
     <Separator layoutX="670.0" layoutY="127.0" orientation="VERTICAL" prefHeight="280.0" />
-    <Separator layoutX="-2.0" layoutY="404.0" prefWidth="924.0" />
+    <Separator layoutX="-4.0" layoutY="414.0" prefWidth="924.0"/>
     <Separator layoutX="920.0" layoutY="128.0" orientation="VERTICAL" prefHeight="521.0" />
     <Separator layoutX="-2.0" layoutY="29.0" orientation="VERTICAL" prefHeight="620.0" />
     <Label layoutX="710.0" layoutY="273.0" text="Четное">
@@ -69,8 +69,7 @@
       </font>
     </Label>
     <Label font="$x3" layoutX="833.0" layoutY="273.0" text="Нечетное"/>
-    <LineChart id="LineChart" fx:id="rightIronAreaChart" layoutX="331.0" layoutY="58.0" prefHeight="280.0"
-               prefWidth="337.0">
+    <LineChart fx:id="rightIronAreaChart" layoutX="331.0" layoutY="58.0" prefHeight="280.0" prefWidth="337.0">
       <xAxis>
         <CategoryAxis side="BOTTOM"/>
       </xAxis>
@@ -78,8 +77,7 @@
         <NumberAxis side="LEFT"/>
       </yAxis>
     </LineChart>
-    <LineChart id="LineChart" fx:id="leftIronAreaChart" layoutX="12.0" layoutY="58.0" prefHeight="280.0"
-               prefWidth="337.0">
+    <LineChart fx:id="leftIronAreaChart" layoutX="12.0" layoutY="58.0" prefHeight="280.0" prefWidth="337.0">
       <xAxis>
         <CategoryAxis side="BOTTOM"/>
       </xAxis>

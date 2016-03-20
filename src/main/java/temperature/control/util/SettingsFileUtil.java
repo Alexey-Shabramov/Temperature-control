@@ -127,4 +127,51 @@ public class SettingsFileUtil {
         File newFile = new File(tmpFileName);
         newFile.renameTo(oldFile);
     }
+
+    public static void saveSensorsIdByMovement(Map<String, String> sensorsIdMap) {
+        String oldFileName = new File("src/main/resources/settings/settings.txt").getPath();
+        String tmpFileName = new File("src/main/resources/settings/settings_tmp.txt").getPath();
+        String[] parts;
+        try {
+            br = new BufferedReader(new FileReader(oldFileName));
+            bw = new BufferedWriter(new FileWriter(tmpFileName));
+            String line;
+            boolean contains = false;
+            while ((line = br.readLine()) != null) {
+                for (Map.Entry<String, String> entry : sensorsIdMap.entrySet()) {
+                    if (line.contains(entry.getKey())) {
+                        parts = line.split("[=]", 2);
+                        stringBuilder.append(parts[0]).append("=").append(entry.getValue()).append(",");
+                        bw.write(stringBuilder.toString() + "\n");
+                        stringBuilder.setLength(0);
+                        contains = true;
+                    }
+                }
+                if (!contains) {
+                    bw.write(line + "\n");
+                }
+                contains = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            stringBuilder.setLength(0);
+            try {
+                if (br != null)
+                    br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (bw != null)
+                    bw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        File oldFile = new File(oldFileName);
+        oldFile.delete();
+        File newFile = new File(tmpFileName);
+        newFile.renameTo(oldFile);
+    }
 }

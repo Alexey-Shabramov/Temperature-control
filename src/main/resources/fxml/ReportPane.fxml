@@ -5,16 +5,17 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import temperature.control.view.*?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" layoutX="14.0" layoutY="533.0" prefHeight="306.0" prefWidth="924.0"
-      xmlns="http://javafx.com/javafx/2.2" fx:controller="temperature.control.controller.ReportController">
+<Pane xmlns:fx="http://javafx.com/fxml/1" layoutX="14.0" layoutY="533.0" prefHeight="535.999977929685" prefWidth="924.0"
+      xmlns="http://javafx.com/javafx/8" fx:controller="temperature.control.controller.ReportController">
   <children>
-    <Label layoutX="409.0" layoutY="30.0" prefWidth="153.0" text="Отчёт о поездке:">
+    <Label layoutX="437.0" layoutY="15.0" prefWidth="153.0" text="Отчёт о поездке:">
       <font>
-        <Font name="System Bold" size="17.0" />
+        <Font name="System Bold" size="17.0" fx:id="x3"/>
       </font>
     </Label>
-    <Separator layoutX="-2.0" layoutY="26.0" prefWidth="924.0" />
-    <ComboBox fx:id="systemListValue" layoutX="200.0" layoutY="69.0" prefHeight="21.0" prefWidth="101.0">
+    <Separator layoutX="-2.0" layoutY="8.0" prefWidth="924.0"/>
+    <ComboBox fx:id="systemListValue" layoutX="200.0" layoutY="63.0" prefHeight="44.0" prefWidth="158.0"
+              style="-fx-font-size: 20;">
       <items>
         <FXCollections fx:factory="observableArrayList" />
       </items>
@@ -24,38 +25,56 @@
         <Font size="17.0" fx:id="x1" />
       </font>
     </Label>
-    <ComboBox fx:id="systemOptionValue" layoutX="200.0" layoutY="107.0" prefHeight="23.0" prefWidth="101.0">
+    <ComboBox fx:id="systemOptionValue" layoutX="200.0" layoutY="119.0" prefHeight="44.0" prefWidth="158.0"
+              style="-fx-font-size: 20;">
       <items>
         <FXCollections fx:factory="observableArrayList" />
       </items>
     </ComboBox>
-    <Label font="$x1" layoutX="103.0" layoutY="106.0" text="Настройка:" />
-    <Label font="$x1" layoutX="151.0" layoutY="144.0" text="Дата:" />
-    <Button fx:id="addNewReport" layoutX="283.0" layoutY="258.0" mnemonicParsing="false" onAction="#saveNewReport" prefWidth="158.0" text="Создать отчет">
+    <Label font="$x1" layoutX="103.0" layoutY="125.0" text="Настройка:"/>
+    <Label font="$x1" layoutX="150.0" layoutY="185.0" text="Дата:"/>
+    <Button fx:id="addNewReport" layoutX="250.0" layoutY="341.0" mnemonicParsing="false" onAction="#saveNewReport"
+            prefHeight="36.28125" prefWidth="193.0" text="Создать отчет">
       <font>
         <Font name="System Bold" size="16.0" fx:id="x2" />
       </font>
     </Button>
-    <Label font="$x1" layoutX="84.0" layoutY="177.0" text="Нагрев слева:" />
-    <Label font="$x1" layoutX="73.0" layoutY="211.0" text="Нагрев справа:" />
-    <Label font="$x1" layoutX="340.0" layoutY="69.0" text="Показание слева:" />
-    <Label font="$x1" layoutX="331.0" layoutY="108.0" prefWidth="153.0" text="Показание справа:" />
-    <Label font="$x1" layoutX="396.0" layoutY="144.0" text="T-воздуха:" />
-    <Label font="$x1" layoutX="340.0" layoutY="181.0" text="Инженер:" />
-    <RadioButton fx:id="evenDirectionOfMovement" font="$x1" layoutX="644.0" layoutY="112.0" mnemonicParsing="false" text="Четное" />
-    <RadioButton id="even" fx:id="unevenDirectionOfMovement" font="$x1" layoutX="644.0" layoutY="84.0" mnemonicParsing="false" text="Нечетное" />
-    <Label font="$x1" layoutX="646.0" layoutY="60.0" text="Направление:" />
-    <Separator layoutX="1.0" layoutY="293.0" prefWidth="924.0" />
-    <NumericTextField fx:id="dateValue" layoutX="200.0" layoutY="146.0" prefWidth="101.0"/>
-    <NumericTextField id="leftIronImitationTemperature" fx:id="leftIronImitationTemperature" layoutX="200.0" layoutY="179.0" prefWidth="101.0" />
-    <NumericTextField id="rightIronImitationTemperature" fx:id="rightIronImitationTemperature" layoutX="200.0" layoutY="209.0" prefWidth="101.0" />
-    <NumericTextField id="leftIronTemperature" fx:id="leftIronTemperature" layoutX="489.0" layoutY="70.0" prefWidth="101.0" />
-    <NumericTextField id="rightIronTemperature" fx:id="rightIronTemperature" layoutX="489.0" layoutY="110.0" prefWidth="101.0" />
-    <NumericTextField id="outsideTemperatureValue" fx:id="outsideTemperatureValue" layoutX="488.0" layoutY="144.0" prefWidth="101.0" />
-    <TextField fx:id="engeneerName" layoutX="431.0" layoutY="181.0" prefWidth="158.0" />
-    <Button id="addNewReport" font="$x2" layoutX="461.0" layoutY="258.0" mnemonicParsing="false"
-            onAction="#automaticReportInformationInsertion" prefWidth="158.0" text="Автозаполнение"/>
-    <Label font="$x1" layoutX="635.0" layoutY="143.0" text="Телефон:" />
-    <TextField id="phone" layoutX="713.0" layoutY="143.0" prefWidth="153.0" />
+    <Label font="$x1" layoutX="84.0" layoutY="239.0" text="Нагрев слева:"/>
+    <Label font="$x1" layoutX="72.0" layoutY="294.0" text="Нагрев справа:"/>
+    <Label font="$x1" layoutX="391.0" layoutY="75.0" text="Показание слева:"/>
+    <Label font="$x1" layoutX="382.0" layoutY="132.0" prefWidth="153.0" text="Показание справа:"/>
+    <Label font="$x1" layoutX="442.0" layoutY="187.0" text="T-воздуха:"/>
+    <Label font="$x1" layoutX="443.0" layoutY="241.0" text="Инженер:"/>
+    <RadioButton fx:id="evenDirectionOfMovement" font="$x1" layoutX="770.0" layoutY="127.0" mnemonicParsing="false"
+                 text="Четное"/>
+    <RadioButton id="even" fx:id="unevenDirectionOfMovement" font="$x1" layoutX="770.0" layoutY="99.0"
+                 mnemonicParsing="false" text="Нечетное"/>
+    <Label font="$x1" layoutX="772.0" layoutY="75.0" text="Направление:"/>
+    <Separator layoutX="0.0" layoutY="374.0" prefHeight="28.28125" prefWidth="924.0"/>
+    <TextField fx:id="dateValue" layoutX="200.0" layoutY="178.0" prefHeight="44.0" prefWidth="158.0"
+               style="-fx-font-size: 20;"/>
+    <NumericTextField fx:id="leftIronImitationTemperature" layoutX="200.0" layoutY="232.0" prefHeight="44.0"
+                      prefWidth="158.0" style="-fx-font-size: 20;"/>
+    <NumericTextField fx:id="rightIronImitationTemperature" layoutX="200.0" layoutY="287.0" prefHeight="44.0"
+                      prefWidth="158.0" style="-fx-font-size: 20;"/>
+    <NumericTextField fx:id="leftIronTemperature" layoutX="535.0" layoutY="69.0" prefHeight="36.28125" prefWidth="158.0"
+                      style="-fx-font-size: 20;"/>
+    <NumericTextField fx:id="rightIronTemperature" layoutX="535.0" layoutY="126.0" prefHeight="36.28125"
+                      prefWidth="158.0" style="-fx-font-size: 20;"/>
+    <NumericTextField fx:id="outsideTemperatureValue" layoutX="535.0" layoutY="178.0" prefHeight="36.28125"
+                      prefWidth="158.0" style="-fx-font-size: 20;"/>
+    <TextField fx:id="engeneerName" layoutX="535.0" layoutY="232.0" prefHeight="36.28125" prefWidth="158.0"
+               style="-fx-font-size: 20;"/>
+    <Button id="addNewReport" font="$x2" layoutX="464.0" layoutY="341.0" mnemonicParsing="false"
+            onAction="#automaticReportInformationInsertion" prefHeight="36.28125" prefWidth="193.0"
+            text="Автозаполнение"/>
+    <Label font="$x1" layoutX="708.0" layoutY="193.0" text="Телефон:"/>
+    <TextField id="phone" layoutX="779.0" layoutY="184.0" prefHeight="44.0" prefWidth="131.0"
+               style="-fx-font-size: 20;"/>
+    <TextArea id="loggerInformation" fx:id="loggerInfo" layoutX="203.0" layoutY="425.0" prefHeight="100.0"
+              prefWidth="637.9999389648438" style="-fx-font-size: 20;" wrapText="true"/>
+    <Label font="$x3" layoutX="466.0" layoutY="395.0" text="Информация"/>
+    <Button id="updateAll" font="$x2" layoutX="30.0" layoutY="461.0" mnemonicParsing="false" onAction="#сleanLogger"
+            prefWidth="153.00003896484122" text="Очистить"/>
   </children>
 </Pane>

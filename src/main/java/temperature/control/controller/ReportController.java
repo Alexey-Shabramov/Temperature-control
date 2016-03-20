@@ -4,20 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.apache.commons.lang3.StringUtils;
+import temperature.control.dict.Constants;
 import temperature.control.dict.SystemOptions;
 import temperature.control.dict.Systems;
 import temperature.control.entity.SingletonFactory;
 import temperature.control.entity.settings.TemperatureOption;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
-public class ReportController implements Initializable{
+public class ReportController implements Initializable {
 
     @FXML
     public Button addNewReport;
@@ -55,7 +55,10 @@ public class ReportController implements Initializable{
     @FXML
     public RadioButton evenDirectionOfMovement;
 
-    public ReportController(){
+    @FXML
+    public TextArea loggerInfo;
+
+    public ReportController() {
         systemListValue = new ComboBox<String>();
         systemOptionValue = new ComboBox<String>();
     }
@@ -71,14 +74,24 @@ public class ReportController implements Initializable{
 
     }
 
-    @FXML
     public void automaticReportInformationInsertion(ActionEvent actionEvent) {
+        loggerInfo.appendText(Constants.AUTOFINDING_DATA);
         TemperatureOption temperatureOption = SingletonFactory.getTemperatureOption();
-        if (StringUtils.isNotEmpty(temperatureOption.getInstallLeftTemperature().toString())) {
+        if (temperatureOption.getInstallLeftTemperature() != null
+                && StringUtils.isNotEmpty(temperatureOption.getInstallLeftTemperature().toString())) {
             leftIronImitationTemperature.setText(temperatureOption.getInstallLeftTemperature().toString());
         }
-        if (StringUtils.isNotEmpty(temperatureOption.getInstallRightTemperature().toString())) {
+        if (temperatureOption.getInstallRightTemperature() != null
+                && StringUtils.isNotEmpty(temperatureOption.getInstallRightTemperature().toString())) {
             rightIronImitationTemperature.setText(temperatureOption.getInstallRightTemperature().toString());
+        }
+        if (temperatureOption.getLeftTemperature() != null
+                && StringUtils.isNotEmpty(temperatureOption.getLeftTemperature().toString())) {
+            leftIronTemperature.setText(temperatureOption.getLeftTemperature().toString());
+        }
+        if (temperatureOption.getRightTemperature() != null
+                && StringUtils.isNotEmpty(temperatureOption.getRightTemperature().toString())) {
+            rightIronTemperature.setText(temperatureOption.getRightTemperature().toString());
         }
         systemOptionValue.getSelectionModel().select(temperatureOption.getSystemOption());
         if (temperatureOption.isEvenDirectionOfMovement()) {
@@ -88,5 +101,16 @@ public class ReportController implements Initializable{
             unevenDirectionOfMovement.setSelected(true);
             evenDirectionOfMovement.setSelected(false);
         }
+        if (temperatureOption.getOuterTemperature() != null && StringUtils.isNoneEmpty(temperatureOption.getOuterTemperature().toString())) {
+            outsideTemperatureValue.setText(temperatureOption.getOuterTemperature().toString());
+        }
+        Date reportDate = new Date();
+        dateValue.setText(new SimpleDateFormat("dd.MM.yyyy").format(reportDate));
+        loggerInfo.appendText(Constants.AUTOFINDING_DATA_IS_ADDED);
+    }
+
+    @FXML
+    public void сleanLogger(ActionEvent actionEvent) {
+        loggerInfo.setText("");
     }
 }
